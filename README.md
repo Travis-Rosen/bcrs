@@ -1,7 +1,7 @@
-# Authors:
--Travis Rosen
--Jourdan Neal
--Soliman Abdelmalak
+* Authors
+*  Travis Rosen
+*  Jourdan Neal
+*  Soliman Abdelmalak
 
 # Bob's Computer Repair Shop
 
