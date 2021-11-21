@@ -1,4 +1,4 @@
-* # Authors
+ # Authors
 *  Travis Rosen
 *  Jourdan Neal
 *  Soliman Abdelmalak
