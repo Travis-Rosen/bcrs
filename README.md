@@ -1,4 +1,9 @@
-# Nodebucket
+ # Authors
+*  Travis Rosen
+*  Jourdan Neal
+*  Soliman Abdelmalak
+
+# Bob's Computer Repair Shop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
