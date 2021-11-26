@@ -15,7 +15,8 @@ const Schema = mongoose.Schema;
 
 //Create itemSchema with text string.
 let securityQuestionSchema = new Schema({
-  question: {type: String},
+  questionText: {type: String},
+  questionAnswer: {type: String}
 });
 
 //Export module itemSchema(export as a module).

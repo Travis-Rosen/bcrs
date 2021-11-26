@@ -25,6 +25,8 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
+const port = process.env.PORT || 3000; // server port
+
 //Routes for API's go here
 
 

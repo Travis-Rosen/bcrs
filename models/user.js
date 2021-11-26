@@ -21,9 +21,12 @@ let userSchema = new Schema({
   //Username and password.
   username: {type: String, unique: true, dropDups: true},
   password: {type: String},
-  //User first and last name.
+  //User details.
   firstName: {type: String},
   lastName: {type: String},
+  phoneNumber: {type: String},
+  email: {type: String},
+  address: {type: String},
   //User role.
   role: {type: String},
   //User invoices.
