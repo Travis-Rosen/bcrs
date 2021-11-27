@@ -18,6 +18,7 @@ const SecurityQuestionsDocument = require('./security-questions');
 
 //Create userSchema.
 let userSchema = new Schema({
+  id: {type: Number},
   //Username and password.
   username: {type: String, unique: true, dropDups: true},
   password: {type: String},
@@ -27,6 +28,7 @@ let userSchema = new Schema({
   phoneNumber: {type: String},
   email: {type: String},
   address: {type: String},
+  isDisabled: {type: Boolean},
   //User role.
   role: {type: String},
   //User invoices.
