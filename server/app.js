@@ -16,6 +16,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 /**
+ * Routes
+ */
+const SessionApi = require('./routes/session-api');
+
+
+/**
  * App configurations
  */
 let app = express();
@@ -47,6 +53,10 @@ mongoose.connect(conn, {
   console.log(`MongoDB Error: ${err.message}`)
 }); // end mongoose connection
 
+/**
+ * API(s) go here...
+ */
+ app.use('/api/session', SessionApi);
 
 /**
  * Create and start server
