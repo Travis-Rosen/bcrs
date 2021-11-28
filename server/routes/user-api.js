@@ -13,7 +13,7 @@
 router = express.Router();
 
 //findAll
-router.get('/api/users', async(req, res) => {
+router.get('/', async(req, res) => {
   try{
     //Query users to find users in which isDisabled is false.
     User.find({ isDisabled : false }, function(err, users) {
@@ -39,7 +39,7 @@ router.get('/api/users', async(req, res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/api/users/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
   try{
     User.findOne({'id': req.params.id}, function(err, user) {
       if (err) {
@@ -67,7 +67,7 @@ router.get('/api/users/:id', async(req, res) => {
 const saltRounds = 10;
 
 //Post request to create new user.
-router.post('/api/users', async(req, res) => {
+router.post('/', async(req, res) => {
     try {
         let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
