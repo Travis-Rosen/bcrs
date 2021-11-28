@@ -28,7 +28,7 @@ let userSchema = new Schema({
   phoneNumber: {type: String},
   email: {type: String},
   address: {type: String},
-  isDisabled: {type: Boolean},
+  isDisabled: {type: Boolean, default: false},
   //User role.
   role: {type: String},
   //User invoices.
