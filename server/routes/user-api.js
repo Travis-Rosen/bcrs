@@ -123,6 +123,94 @@ router.post('/', async(req, res) => {
 
 //----------------------------------------------//
 //updateUser
+app.put('/:id', async(req,res) => {
+  try {
+    User.findOne({'id': req.params.id}, function(err, user) {
+      if (err){
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal server error!'
+        })
+      } else {
+        console.log(user);
+        //Set user fields.
+        user.set({
+          userName: req.body.userName,
+          password: hashedPassword,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          email: req.body.email,
+          address: req.body.address,
+        });
+        //Save the updated user.
+        user.save(function(err, updatedUser) {
+          if (err) {
+            console.log(err);
+            res.status(500).send({
+              'message': 'Internal server error!'
+            })
+          } else {
+            console.log(updatedUser);
+            res.status(200).send({
+              'message': 'User Updated!'
+            })
+          }
+        })
+      }
+    })
+  }
+  catch (e){
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal server error!'
+    })
+  }
+})
+
+//----------------------------------------------//
+//deleteUser
+app.delete('/:id', async(req,res) => {
+  try{
+    User.findOne({'id': req.params.id}, function(err,user){
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal server error'
+        })
+      } else {
+        console.log(user);
+        //Set the user isDisabled to true, instead of deleting record.
+        user.set({
+          isDisabled: true,
+        });
+        //save the disabledUser
+        user.save(function (err, disableUser) {
+          if(err) {
+            console.log(err)
+            res.status(500).send({
+              'message': 'Internal server error'
+            })
+            //successfully disabled the user
+          } else {
+            console.log(disableUser);
+            res.status(200).send({
+              'message': 'User has been disabled.'
+            })
+          }
+        })
+      }
+    })
+  }
+  catch (e) {
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal server error.'
+    })
+  }
+})
+
+
 
 //Export the router
 module.exports = router
