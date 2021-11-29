@@ -46,6 +46,7 @@ router.get('/', async(req, res) => {
 //findById
 router.get('/:_id', async(req, res) => {
   try{
+    //find user by Id
     User.findOne({'_id': req.params._id}, function(err, user) {
       if (err) {
         console.log(err);
