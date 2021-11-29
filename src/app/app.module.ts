@@ -23,6 +23,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+<<<<<<< HEAD
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
+=======
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,6 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 
+>>>>>>> 2965cc9000a0468e989f59ff23a35e129e726a9a
 
 @NgModule({
   declarations: [
@@ -45,8 +53,14 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
+<<<<<<< HEAD
+    UserCreateComponent,
+    UserDetailsComponent,
+    UserListComponent
+=======
     NotFoundComponent,
     SigninComponent
+>>>>>>> 2965cc9000a0468e989f59ff23a35e129e726a9a
   ],
   imports: [
     BrowserModule,
