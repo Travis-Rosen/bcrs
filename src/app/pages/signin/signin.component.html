@@ -1,0 +1,39 @@
+<!--
+Author: Travis Rosen
+Date: 11/29/2021
+Title: signin.component.html
+Description: HTML page for user log in page
+-->
+
+<div class="main-div">
+  <div fxLayout="column">
+    <div fxFlex *ngIf="error" class="message-error">
+      {{ error }}
+    </div>
+    <mat-card fxFlex class="mat-elevation-z8 log-in-container">
+      <mat-card-title class="title">
+        Login
+      </mat-card-title>
+      <br>
+      <mat-card-content>
+        <div>
+          <p>Enter a valid username and password.</p>
+          <mat-form-field class="form">
+            <mat-label>Enter your username</mat-label>
+            <input matInput placeholder="Username" required>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="form">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+          </mat-form-field>
+          <br>
+          <button mat-raised-button>Log In</button>
+          <br>
+          <button mat-raised-button>Create an account</button>
+          <button mat-raised-button>Forgot Password?</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
