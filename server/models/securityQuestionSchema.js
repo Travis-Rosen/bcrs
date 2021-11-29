@@ -14,10 +14,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create itemSchema with text string.
-let securityQuestionSchema = new Schema({
-  questionText: {type: String},
-  questionAnswer: {type: String}
+let questionSchema = new Schema({
+  questionId: { type: String },
+  answer: { type: String },
 });
 
 //Export module itemSchema(export as a module).
-module.exports = securityQuestionSchema;
+module.exports = questionSchema;

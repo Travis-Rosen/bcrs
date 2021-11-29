@@ -20,6 +20,7 @@ const mongoose = require('mongoose');
  */
 const SessionApi = require('./routes/session-api');
 const UserApi = require('./routes/user-api')
+const SecurityQuestionsApi = require('./routes/security-questions-api')
 
 
 /**
@@ -34,12 +35,12 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
 const port = process.env.PORT || 3000; // server port
 
-//Routes for API's go here
+
 
 
 
 // Database Connection String
-const conn = '';
+const conn = 'mongodb+srv://tmrosen:tmrosen@bcrs01.m3xib.mongodb.net/BCRS01?retryWrites=true&w=majority';
 
 /**
  * Database connection
@@ -58,7 +59,8 @@ mongoose.connect(conn, {
  * API(s) go here...
  */
  app.use('/api/session', SessionApi);
- app.use('.api/users', UserApi);
+ app.use('/api', UserApi);
+ app.use('/api', SecurityQuestionsApi);
 
 /**
  * Create and start server

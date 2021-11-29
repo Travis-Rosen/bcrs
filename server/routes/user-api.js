@@ -8,12 +8,17 @@
 =====================================================
 */
 
+
+//Require Statements
+const express = require('express')
+const User = require('../models/user');
+const bcrypt = require('bcryptjs');
+const router = express.Router();
+
 //-----------------------------User API's-----------------------------------------------------//
 
-router = express.Router();
-
 //findAll
-router.get('/', async(req, res) => {
+router.get('/users', async(req, res) => {
   try{
     //Query users to find users in which isDisabled is false.
     User.find({ isDisabled : false }, function(err, users) {
@@ -39,7 +44,7 @@ router.get('/', async(req, res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/:id', async(req, res) => {
+router.get('/users/:id', async(req, res) => {
   try{
     User.findOne({'id': req.params.id}, function(err, user) {
       if (err) {
@@ -67,63 +72,40 @@ router.get('/:id', async(req, res) => {
 const saltRounds = 10;
 
 //Post request to create new user.
-router.post('/', async(req, res) => {
-    try {
-        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
-        //create variable for newRegisteredUser
-        const newRegisteredUser = {
-            userName: req.body.userName,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            email: req.body.email,
-            address: req.body.address,
-        }
-
-        User.findOne({'userName': req.body.userName}, function(err,user){
-            if (err) {
-                console.log(err);
-                res.status(501).send({
-                    'message' : `MongoDB Exception : ${err}`
-                })
-            } else {
-                if(!user){
-                  //Create new user. Will return err or newRegistered user.
-                    user.create(newRegisteredUser, function(err, user) {
-                        if (err) {
-                            console.log(err);
-                            res.status(501).send({
-                                'message': `MongoDB Exception: ${err}`
-                            })
-                        } else {
-                            console.log(user);
-                            res.status(200).send({
-                                'message': `Registered User`
-                            })
-                        }
-                    })
-                    //Error if userName already exists.
-                } else {
-                    console.log(err);
-                    res.status(401).send({
-                        'message': 'Username is already in use'
-                    })
-                }
-            }
-        })
-    } catch (e) {
-        console.log(e);
+router.post('/user', async (req, res) => {
+  try {
+    const hashedPassword = bcypt.hashSync(req.body.password, saltRounds);
+    const newUser = {
+      username: req.body.username,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address
+    };
+    await User.create(newUser, function (err, user) {
+      if (err) {
+        console.log(err);
         res.status(500).send({
-            'message': `Server Exception: ${e.message}`
+          'message': 'Internal Server Error'
         })
-    }
-})
+      } else {
+        console.log(user);
+        res.json(user);
+
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal Server Error'
+    })
+  }
+});
 
 //----------------------------------------------//
 //updateUser
-app.put('/:id', async(req,res) => {
+router.put('/users/:id', async(req,res) => {
   try {
     User.findOne({'id': req.params.id}, function(err, user) {
       if (err){
@@ -170,7 +152,7 @@ app.put('/:id', async(req,res) => {
 
 //----------------------------------------------//
 //deleteUser
-app.delete('/:id', async(req,res) => {
+router.delete('/users/:id', async(req,res) => {
   try{
     User.findOne({'id': req.params.id}, function(err,user){
       if (err) {
@@ -213,4 +195,4 @@ app.delete('/:id', async(req,res) => {
 
 
 //Export the router
-module.exports = router
+module.exports = router;
