@@ -7,18 +7,18 @@
 ; Description: API's for User  CRUD operations.
 =====================================================
 */
-
-
-//Require Statements
-const express = require('express')
-const User = require('../models/user');
+// Require statements
 const bcrypt = require('bcryptjs');
-const router = express.Router();
+const express = require('express');
+const User = require('../../models/user');
 
+
+// Configurations
+const router = express.Router();
 //-----------------------------User API's-----------------------------------------------------//
 
 //findAll
-router.get('/users', async(req, res) => {
+router.get('/', async(req, res) => {
   try{
     //Query users to find users in which isDisabled is false.
     User.find({ isDisabled : false }, function(err, users) {
@@ -44,9 +44,10 @@ router.get('/users', async(req, res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/users/:id', async(req, res) => {
+router.get('/:_id', async(req, res) => {
   try{
-    User.findOne({'id': req.params.id}, function(err, user) {
+    //find user by Id
+    User.findOne({'_id': req.params._id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -72,42 +73,68 @@ router.get('/users/:id', async(req, res) => {
 const saltRounds = 10;
 
 //Post request to create new user.
-router.post('/user', async (req, res) => {
-  try {
-    const hashedPassword = bcypt.hashSync(req.body.password, saltRounds);
-    const newUser = {
-      username: req.body.username,
-      password: hashedPassword,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      phoneNumber: req.body.phoneNumber,
-      address: req.body.address
-    };
-    await User.create(newUser, function (err, user) {
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal Server Error'
-        })
-      } else {
-        console.log(user);
-        res.json(user);
+router.post('/', async(req, res) => {
+    try {
+        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
-      }
-    });
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({
-      'message': 'Internal Server Error'
-    })
-  }
-});
+        //create variable for newRegisteredUser
+        const newRegisteredUser = {
+            id: req.body.id,
+            userName: req.body.userName,
+            password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber,
+            email: req.body.email,
+            address: req.body.address,
+        }
+
+        User.findOne({'userName': req.body.userName}, function(err,user){
+            if (err) {
+                console.log(err);
+                res.status(501).send({
+                    'message' : `MongoDB Exception : ${err}`
+                })
+            } else {
+                if(!user){
+                  //Create new user. Will return err or newRegistered user.
+                    User.create(newRegisteredUser, function(err, user) {
+                        if (err) {
+                            console.log(err);
+                            res.status(501).send({
+                                'message': `MongoDB Exception: ${err}`
+                            })
+                        } else {
+                            console.log(user);
+                            res.status(200).send({
+                                'message': `Registered User`
+                            })
+                        }
+                    })
+                    //Error if userName already exists.
+                } else {
+                    console.log(err);
+                    res.status(401).send({
+                        'message': 'Username is already in use'
+                    })
+                }
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({
+            'message': `Server Exception: ${e.message}`
+        })
+    }
+})
 
 //----------------------------------------------//
 //updateUser
-router.put('/users/:id', async(req,res) => {
+router.put('/:_id', async(req,res) => {
+  let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+
   try {
-    User.findOne({'id': req.params.id}, function(err, user) {
+    User.findOne({'_id': req.params._id}, function(err, user) {
       if (err){
         console.log(err);
         res.status(500).send({
@@ -117,6 +144,7 @@ router.put('/users/:id', async(req,res) => {
         console.log(user);
         //Set user fields.
         user.set({
+          id: req.body.id,
           userName: req.body.userName,
           password: hashedPassword,
           firstName: req.body.firstName,
@@ -124,6 +152,7 @@ router.put('/users/:id', async(req,res) => {
           phoneNumber: req.body.phoneNumber,
           email: req.body.email,
           address: req.body.address,
+          isDisabled: req.body.isDisabled,
         });
         //Save the updated user.
         user.save(function(err, updatedUser) {
@@ -152,9 +181,9 @@ router.put('/users/:id', async(req,res) => {
 
 //----------------------------------------------//
 //deleteUser
-router.delete('/users/:id', async(req,res) => {
+router.delete('/:_id', async(req,res) => {
   try{
-    User.findOne({'id': req.params.id}, function(err,user){
+    User.findOne({'_id': req.params._id}, function(err,user){
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -195,4 +224,4 @@ router.delete('/users/:id', async(req,res) => {
 
 
 //Export the router
-module.exports = router;
+module.exports = router
