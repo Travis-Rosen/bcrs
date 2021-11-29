@@ -7,10 +7,15 @@
 ; Description: API's for User  CRUD operations.
 =====================================================
 */
+// Require statements
+const bcrypt = require('bcryptjs');
+const express = require('express');
+const User = require('../../models/user');
 
+
+// Configurations
+const router = express.Router();
 //-----------------------------User API's-----------------------------------------------------//
-
-router = express.Router();
 
 //findAll
 router.get('/', async(req, res) => {
@@ -39,9 +44,9 @@ router.get('/', async(req, res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/:id', async(req, res) => {
+router.get('/:_id', async(req, res) => {
   try{
-    User.findOne({'id': req.params.id}, function(err, user) {
+    User.findOne({'_id': req.params._id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -73,6 +78,7 @@ router.post('/', async(req, res) => {
 
         //create variable for newRegisteredUser
         const newRegisteredUser = {
+            id: req.body.id,
             userName: req.body.userName,
             password: hashedPassword,
             firstName: req.body.firstName,
@@ -91,7 +97,7 @@ router.post('/', async(req, res) => {
             } else {
                 if(!user){
                   //Create new user. Will return err or newRegistered user.
-                    user.create(newRegisteredUser, function(err, user) {
+                    User.create(newRegisteredUser, function(err, user) {
                         if (err) {
                             console.log(err);
                             res.status(501).send({
@@ -123,9 +129,11 @@ router.post('/', async(req, res) => {
 
 //----------------------------------------------//
 //updateUser
-app.put('/:id', async(req,res) => {
+router.put('/:_id', async(req,res) => {
+  let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+
   try {
-    User.findOne({'id': req.params.id}, function(err, user) {
+    User.findOne({'_id': req.params._id}, function(err, user) {
       if (err){
         console.log(err);
         res.status(500).send({
@@ -135,6 +143,7 @@ app.put('/:id', async(req,res) => {
         console.log(user);
         //Set user fields.
         user.set({
+          id: req.body.id,
           userName: req.body.userName,
           password: hashedPassword,
           firstName: req.body.firstName,
@@ -142,6 +151,7 @@ app.put('/:id', async(req,res) => {
           phoneNumber: req.body.phoneNumber,
           email: req.body.email,
           address: req.body.address,
+          isDisabled: req.body.isDisabled,
         });
         //Save the updated user.
         user.save(function(err, updatedUser) {
@@ -170,9 +180,9 @@ app.put('/:id', async(req,res) => {
 
 //----------------------------------------------//
 //deleteUser
-app.delete('/:id', async(req,res) => {
+router.delete('/:_id', async(req,res) => {
   try{
-    User.findOne({'id': req.params.id}, function(err,user){
+    User.findOne({'_id': req.params._id}, function(err,user){
       if (err) {
         console.log(err);
         res.status(500).send({
