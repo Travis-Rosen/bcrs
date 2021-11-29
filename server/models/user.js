@@ -14,14 +14,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create a variable SecurityQuestions that references the security-question.js file.
-const SecurityQuestionsDocument = require('./security-questions');
+const SecurityQuestionsDocument = require('./securityQuestionSchema')
 
 //Create userSchema.
 let userSchema = new Schema({
-  id: {type: Number},
   //Username and password.
   username: {type: String, unique: true, dropDups: true},
-  password: {type: String},
+  password: {type: String, required: true},
   //User details.
   firstName: {type: String},
   lastName: {type: String},
@@ -30,11 +29,12 @@ let userSchema = new Schema({
   address: {type: String},
   isDisabled: {type: Boolean, default: false},
   //User role.
-  role: {type: String},
-  //User invoices.
-  invoices: {type: Array},
+  role: {type: String, default: 'standard'},
   //securityQuestions referencing the SecurityQuestionDocument.
   securityQuestions: [SecurityQuestionsDocument],
+
+  date_created: {type: Date, default: new Date()},
+  date_modified: {type: Date},
   }, { collection: 'users'})
 
   //Export the userSchema.
