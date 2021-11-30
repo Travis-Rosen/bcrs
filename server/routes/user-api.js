@@ -10,7 +10,7 @@
 // Require statements
 const bcrypt = require('bcryptjs');
 const express = require('express');
-const User = require('../../models/user');
+const User = require('../models/user');
 
 
 // Configurations

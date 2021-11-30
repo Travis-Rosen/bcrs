@@ -17,19 +17,18 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 //Material Design / styling imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-<<<<<<< HEAD
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserCreateComponent } from './pages/user-create/user-create.component';
-import { UserDetailsComponent } from './pages/user-details/user-details.component';
-import { UserListComponent } from './pages/user-list/user-list.component';
-=======
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -42,25 +41,20 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 
-
-
-
->>>>>>> 2965cc9000a0468e989f59ff23a35e129e726a9a
-
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-<<<<<<< HEAD
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent
-=======
+    UserListComponent,
     NotFoundComponent,
-    SigninComponent
->>>>>>> 2965cc9000a0468e989f59ff23a35e129e726a9a
+    SigninComponent,
+    SecurityQuestionListComponent,
+    SecurityQuestionDetailsComponent,
+    SecurityQuestionsCreateComponent,
   ],
   imports: [
     BrowserModule,
