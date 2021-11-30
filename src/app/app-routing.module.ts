@@ -15,8 +15,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './pages/user-list/user-list.component';
-import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
@@ -32,29 +32,30 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UserListComponent
+        component: UserListComponent,
       },
       {
         path: 'users/:userId',
-        component: UserDetailsComponent
+        component: UserDetailsComponent,
       },
       {
         path: 'users/create/new',
-        component: UserCreateComponent
+        component: UserCreateComponent,
       },
       {
         path: 'security-questions',
-        component: SecurityQuestionListComponent
+        component: SecurityQuestionListComponent,
       },
       {
-        path: 'security-questions/:questionId',
-        component: SecurityQuestionDetailsComponent
+        path: 'security-questions/:id',
+        component: SecurityQuestionDetailsComponent,
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionsCreateComponent
+        component: SecurityQuestionCreateComponent,
       },
     ],
+      
     canActivate: [AuthGuard]
   },
   {

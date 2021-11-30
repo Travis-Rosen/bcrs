@@ -29,7 +29,7 @@ let userSchema = new Schema({
   address: {type: String},
   isDisabled: {type: Boolean, default: false},
   //User role.
-  role: {type: String, default: 'standard'},
+  role: UserRoleSchema,
   //securityQuestions referencing the SecurityQuestionDocument.
   securityQuestions: [SecurityQuestionsDocument],
 
