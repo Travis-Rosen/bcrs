@@ -5,17 +5,17 @@
  ; Description: APIs for managing session Users.
 */
 
-// Require statements 
+// Require statements
  const express = require('express');
  const User = require('../models/user');
  const bcrypt = require('bcryptjs');
  const ErrorResponse = require('../services/error-response');
  const BaseResponse = require('../services/base-response');
- 
+
  // Configurations
  const router = express.Router();
  const saltRounds = 10; //default salt rounds for password hashing
- 
+
  /**
   * API: User SignIn
   * sprint 1
@@ -30,11 +30,11 @@
                  res.status(500).send(signinMongodbErrorResponse.toObject());
              } else {
                  console.log(user);
- 
+
                  // if the username is valid
                  if (user) {
                      let passwordIsValid = bcrypt.compareSync(req.body.password, user.password); // compare the saved hashed password
- 
+
                     // Send 200 response & BaseResponse: 'Login Successful'
                      if (passwordIsValid) {
                          console.log(`Login successful`);
@@ -48,7 +48,7 @@
                        res.status(401).send(invalidPasswordResponse.toObject());
                    }
                  }
- 
+
                  // if the username is invalid
                  else {
                      console.log(`Username: ${req.body.userName} is invalid`);
@@ -64,6 +64,6 @@
          const signinCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
          res.status(500).send(signinCatchErrorResponse.toObject());
      }
- 
+
  });
  module.exports = router;

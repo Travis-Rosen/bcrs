@@ -17,7 +17,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
-
+import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
 
 const routes: Routes = [
   {
@@ -53,7 +55,8 @@ const routes: Routes = [
         component: SecurityQuestionCreateComponent,
       },
     ],
-    canActivate: [AuthGuard],
+      
+    canActivate: [AuthGuard]
   },
   {
     path: 'session',
@@ -80,4 +83,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

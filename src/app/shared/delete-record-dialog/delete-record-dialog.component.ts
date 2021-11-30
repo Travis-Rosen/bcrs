@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-record-dialog',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteRecordDialogComponent implements OnInit {
 
-  constructor() { }
-
+    //Creating Variables for the Component
+    recordId: string;
+    dialogHeader: string;
+    dialogBody: string;
+  
+    constructor(private dialogRef: MatDialogRef<DeleteRecordDialogComponent>, @Inject(MAT_DIALOG_DATA) data) {
+      this.recordId = data.recordId;
+      this.dialogHeader = data.dialogHeader;
+      this.dialogBody = data.dialogBody;
+     }
+  
   ngOnInit(): void {
   }
 
