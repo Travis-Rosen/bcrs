@@ -12,9 +12,8 @@
 //Require statements for Mongoose schema
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-//Create a variable SecurityQuestions that references the security-question.js file.
-const SecurityQuestionsDocument = require('./securityQuestionSchema')
+const UserRoleSchema = require("../schemas/user-role");
+const SelectedSecurityQuestionSchema = require("../schemas/selected-security-question");
 
 //Create userSchema.
 let userSchema = new Schema({
@@ -30,8 +29,8 @@ let userSchema = new Schema({
   isDisabled: {type: Boolean, default: false},
   //User role.
   role: UserRoleSchema,
-  //securityQuestions referencing the SecurityQuestionDocument.
-  securityQuestions: [SecurityQuestionsDocument],
+  //selectedSecurityQuestions referencing the SelectedSecurityQuestionSchema.
+  selectedSecurityQuestions: [SelectedSecurityQuestionSchema],
 
   date_created: {type: Date, default: new Date()},
   date_modified: {type: Date},

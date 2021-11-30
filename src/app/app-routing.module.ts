@@ -52,7 +52,7 @@ const routes: Routes = [
       },
       {
         path: 'security-questions/create/new',
-        component: SecurityQuestionCreateComponent,
+        component: SecurityQuestionsCreateComponent,
       },
     ],
       

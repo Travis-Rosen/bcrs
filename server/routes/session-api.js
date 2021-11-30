@@ -8,13 +8,14 @@
 // Require statements
  const express = require('express');
  const User = require('../models/user');
- const bcrypt = require('bcryptjs');
+ const bcrypt = require("bcryptjs");
  const ErrorResponse = require('../services/error-response');
  const BaseResponse = require('../services/base-response');
 
  // Configurations
  const router = express.Router();
  const saltRounds = 10; //default salt rounds for password hashing
+
 
  /**
   * API: User SignIn

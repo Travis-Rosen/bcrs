@@ -1,4 +1,9 @@
-
+/*
+ ; Title:  securityQuestionModel.js
+ ; Author: Group-2
+ ; Date:   27 November 2021
+ ; Description: Security Question Model
+*/
 
 
 
@@ -11,5 +16,5 @@ let securityQuestionSchema = new Schema({
   isDisabled: {type: Boolean, default: false}
 },{collection: 'security-questions'});
 
-module.exports = mongoose.model('Question', securityQuestionSchema);
+module.exports = mongoose.model('SecurityQuestion', securityQuestionSchema);
 
