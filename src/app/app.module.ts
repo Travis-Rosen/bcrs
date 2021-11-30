@@ -35,6 +35,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 //CookieService
 import { CookieService } from 'ngx-cookie-service';
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { CookieService } from 'ngx-cookie-service';
     UserListComponent
     NotFoundComponent,
     SigninComponent,
+    DeleteRecordDialogComponent,
   ],
   imports: [
     BrowserModule,

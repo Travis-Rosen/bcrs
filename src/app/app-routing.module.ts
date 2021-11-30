@@ -14,6 +14,10 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserListComponent } from './pages/user-list/user-list.component';
+import { UserCreateComponent } from './pages/user-create/user-create.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+
 
 const routes: Routes = [
   {
@@ -23,9 +27,33 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        canActivate: [AuthGuard]
-      }
-    ]
+      },
+      {
+        path: 'users',
+        component: UserListComponent,
+      },
+      {
+        path: 'users/:userId',
+        component: UserDetailsComponent,
+      },
+      {
+        path: 'users/create/new',
+        component: UserCreateComponent,
+      },
+      {
+        path: 'security-questions',
+        component: SecurityQuestionListComponent,
+      },
+      {
+        path: 'security-questions/:id',
+        component: SecurityQuestionDetailsComponent,
+      },
+      {
+        path: 'security-questions/create/new',
+        component: SecurityQuestionCreateComponent,
+      },
+    ],
+    canActivate: [AuthGuard],
   },
   {
     path: 'session',
@@ -52,3 +80,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

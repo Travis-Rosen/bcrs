@@ -17,7 +17,7 @@
  const saltRounds = 10; //default salt rounds for password hashing
  
  /**
-  * API: SignIn
+  * API: User SignIn
   * sprint 1
  **/
 
@@ -36,7 +36,7 @@
                      let passwordIsValid = bcrypt.compareSync(req.body.password, user.password); // compare the saved hashed password
  
                     // Send 200 response & BaseResponse: 'Login Successful'
-                     if (passwordIsValid && !user.isDisabled) {
+                     if (passwordIsValid) {
                          console.log(`Login successful`);
                          const signinResponse = new BaseResponse(200, 'Login successful', user);
                          res.json(signinResponse.toObject());
@@ -44,15 +44,15 @@
                      else {
                       //If the password is invalid return 401
                        console.log(`Invalid password for username: ${user.userName}`);
-                       const invalidPasswordResponse = new BaseResponse(401, "Invalid user name and/or password, please try again", req.body.password);
-                       res.json(invalidPasswordResponse.toObject());
+                       const invalidPasswordResponse = new BaseResponse(401, "Invalid user name and/or password, please try again", null);
+                       res.status(401).send(invalidPasswordResponse.toObject());
                    }
                  }
  
                  // if the username is invalid
                  else {
                      console.log(`Username: ${req.body.userName} is invalid`);
-                     const invalidUserNameResponse = new BaseResponse(401, 'Invalid username and/or password, please try again', req.body.userName);
+                     const invalidUserNameResponse = new BaseResponse(401, 'Invalid username and/or password, please try again', null);
                      //res.status(400).send(invalidUserNameResponse.toObject());
                      res.status(401).send(invalidUserNameResponse.toObject());
                     }
