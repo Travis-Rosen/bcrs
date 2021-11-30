@@ -1,1 +1,50 @@
-<p>user-list works!</p>
+<div fxLayout= "column">
+  <!--Create card-->
+  <mat-card>
+    <!--Card title-->
+    <mat-card-title>Users</mat-card-title>
+
+
+    <mat-card-content *ngIf="users">
+      <!--Table for user information-->
+      <table  mat-table [dataSource] = "users">
+        <!--UserName-->
+        <ng-container matColumnDef ="userName">
+          <!--Table header-->
+          <th mat-header-cell #matHeaderCellDef="userName">Username</th>
+          <!--Table data-->
+          <td mat-cell #matCellDef ="let element">
+            {{element.userName}}
+          </td>
+        </ng-container>
+        <!--firstName-->
+        <ng-container matColumnDef ="firstName">
+          <!--Table header-->
+          <th mat-header-cell #matHeaderCellDef="firstName">First Name</th>
+          <!--Table data-->
+          <td mat-cell #matCellDef ="let element">
+            {{element.firstName}}
+          </td>
+        </ng-container>
+        <!--LastName-->
+        <ng-container matColumnDef ="lastName">
+          <!--Table header-->
+          <th mat-header-cell #matHeaderCellDef="lastName">Last Name</th>
+          <!--Table data-->
+          <td mat-cell #matCellDef ="let element">
+            {{element.lastName}}
+          </td>
+        </ng-container>
+        <!--phoneNumber-->
+        <ng-container matColumnDef ="phoneNumber">
+          <!--Table header-->
+          <th mat-header-cell #matHeaderCellDef="lastName">Phone</th>
+          <!--Table data-->
+          <td mat-cell #matCellDef ="let element">
+            {{element.phoneNumber}}
+          </td>
+        </ng-container>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
