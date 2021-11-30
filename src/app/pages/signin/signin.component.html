@@ -4,36 +4,60 @@ Date: 11/29/2021
 Title: signin.component.html
 Description: HTML page for user log in page
 -->
-
-<div class="main-div">
-  <div fxLayout="column">
-    <div fxFlex *ngIf="error" class="message-error">
-      {{ error }}
+<mat-toolbar color="primary">
+  <mat-toolbar-row></mat-toolbar-row>
+  <mat-toolbar-row></mat-toolbar-row>
+  <mat-toolbar-row>
+    <div style="width: 90%;">
+      <p style="text-align: center; padding-left: 10%; font-weight: lighter;">
+        Bob's Computer Repair Shop <br>
+        <mat-icon>build</mat-icon>
+      </p>
     </div>
-    <mat-card fxFlex class="mat-elevation-z8 log-in-container">
-      <mat-card-title class="title">
-        Login
-      </mat-card-title>
-      <br>
-      <mat-card-content>
-        <div>
-          <p>Enter a valid username and password.</p>
-          <mat-form-field class="form">
-            <mat-label>Enter your username</mat-label>
-            <input matInput placeholder="Username" required>
-          </mat-form-field>
+  </mat-toolbar-row>
+  <mat-toolbar-row></mat-toolbar-row>
+  <mat-toolbar-row></mat-toolbar-row>
+  <mat-toolbar-row></mat-toolbar-row>
+</mat-toolbar>
+<br><br>
+
+  <div fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
+      <mat-card class="mat-card-top pa-0">
+        <mat-card-title class="login-title" style="text-align: center; font-size: 48px; font-weight: lighter;">
+          Employee Login
+        </mat-card-title>
+        <br>
+        <mat-card-subtitle class="create-title" style="text-align: center; font-weight: lighter;">
+          <a routerLink="/" class="create-link">Need to create an account?</a>
+        </mat-card-subtitle>
+        <mat-card-subtitle class="valid-title" style="text-align: center;">Please enter a valid username/password to proceed</mat-card-subtitle>
+        <mat-card-content>
+          <small  style="color: red;"  *ngIf="errorMessage"> {{ errorMessage }}</small>
           <br>
-          <mat-form-field class="form">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-          </mat-form-field>
-          <br>
-          <button mat-raised-button>Log In</button>
-          <br>
-          <button mat-raised-button>Create an account</button>
-          <button mat-raised-button>Forgot Password?</button>
-        </div>
-      </mat-card-content>
-    </mat-card>
+          <mat-card class="mat-elevation-z0">
+            <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
+              <mat-card-content fxLayout="column" fxLayoutGap="10px">
+                <mat-form-field>
+                  <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="User Name"/>
+                  <mat-error class="error" *ngIf="form.controls.userName.hasError('required') && form.controls.userName.touched">
+                    Username is a required field.
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder="Password"/>
+                  <mat-error class="error" *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
+                    Password must be at least 8 characters, contain one number, and one letter.
+                  </mat-error>
+                </mat-form-field>
+              </mat-card-content>
+              <mat-card-actions>
+                <button type="submit" [disabled]="!form.valid" fxFlex mat-raised button color="accent">Submit</button>
+              </mat-card-actions>
+            </form>
+          </mat-card>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
-</div>
+
