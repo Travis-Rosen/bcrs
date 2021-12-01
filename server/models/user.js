@@ -18,7 +18,7 @@ const SelectedSecurityQuestionSchema = require("../schemas/selected-security-que
 //Create userSchema.
 let userSchema = new Schema({
   //Username and password.
-  userName: {type: String, unique: true, required: true},
+  userName: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   //User details.
   firstName: {type: String},

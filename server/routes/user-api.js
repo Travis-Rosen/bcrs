@@ -12,13 +12,34 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const User = require('../models/user');
 const RoleSchema = require('../schemas/user-role')
-const BaseResponse = require("../services/base-response");
-const ErrorResponse = require("../services/error-response");
+
 // Configurations
 const router = express.Router();
 //-----------------------------User API's-----------------------------------------------------//
 
 //findAll
+router.get('/', async (req,res) => {
+  try {
+    User.find({}).where('isDisabled').equals(false).exec(function(err, users) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal Server Error'
+        })
+      } else {
+        console.log(users);
+        res.json(users);
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal Server Error'
+    })
+  }
+});
+
+/*
 router.get('/', async(req, res) => {
   try{
     //Query users to find users in which isDisabled is false.
@@ -42,13 +63,14 @@ router.get('/', async(req, res) => {
     })
   }
 });
+*/
 
 //----------------------------------------------//
 //findById
 router.get('/:id', async(req, res) => {
   try{
     //find user by Id
-    User.findOne({'_id': req.params._id}, function(err, user) {
+    User.findOne({'_id': req.params.id}, function(err, user) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -117,7 +139,7 @@ router.put('/:id', async(req,res) => {
   let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
   try {
-    User.findOne({'_id': req.params._id}, function(err, user) {
+    User.findOne({'_id': req.params.id}, function(err, user) {
       if (err){
         console.log(err);
         res.status(500).send({
@@ -162,7 +184,7 @@ router.put('/:id', async(req,res) => {
 //deleteUser
 router.delete('/:id', async(req,res) => {
   try{
-    User.findOne({'_id': req.params._id}, function(err,user){
+    User.findOne({'_id': req.params.id}, function(err,user){
       if (err) {
         console.log(err);
         res.status(500).send({

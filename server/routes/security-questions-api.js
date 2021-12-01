@@ -9,21 +9,45 @@
 */
 
 const express = require('express')
-const Question = require('../models/security-question');
+const SecurityQuestion = require('../models/security-question');
 const router = express.Router();
 
-//findAll
+
+
 router.get('/', async(req, res) => {
   try {
-    Question.find({ isDisabled: false}, function (err, questions) {
+    SecurityQuestion.find({}).where('isDisabled').equals(false).exec(function(err, securityQuestions) {
       if (err) {
         console.log(err);
         res.status(500).send({
           'message': 'Internal Server Error'
         })
       } else {
-        console.log(questions);
-        res.json(questions);
+        console.log(securityQuestions)
+        res.json(securityQuestions);
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal Server Error'
+    })
+  }
+})
+
+/*
+//findAll
+router.get('/', async(req, res) => {
+  try {
+    SecurityQuestion.find({ isDisabled: false}, function (err, securityQuestions) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal Server Error'
+        })
+      } else {
+        console.log(securityQuestions);
+        res.json(securityQuestions);
       }
     })
   } catch (e) {
@@ -33,19 +57,20 @@ router.get('/', async(req, res) => {
     })
   }
 });
+*/
 
 //findById
 router.get('/:id', async(req, res) => {
   try {
-    Question.findOne({'_id': req.params.id}, function(err, question) {
+    SecurityQuestion.findOne({'_id': req.params.id}, function(err, securityQuestion) {
       if (err) {
         console.log(err);
         res.status(500).send({
           'message': 'Internal Server Error'
         })
       } else {
-        console.log(question);
-        res.json(question);
+        console.log(securityQuestion);
+        res.json(securityQuestion);
       }
     })
 
@@ -60,19 +85,19 @@ router.get('/:id', async(req, res) => {
 //createSecurityQuestion
 router.post('/', async (req, res) => {
   try {
-    const newQuestion = {
+    const newSecurityQuestion = {
       text: req.body.text
     }
 
-    Question.create(newQuestion, function(err, question) {
+    SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
       if (err) {
         console.log(err);
         res.status(500).send({
           'message': 'Internal Server Error'
         })
       } else {
-        console.log(question);
-        res.json(question);
+        console.log(securityQuestion);
+        res.json(securityQuestion);
       }
     })
   } catch (e) {
@@ -86,26 +111,26 @@ router.post('/', async (req, res) => {
 //updateSecurityQuestions
 router.put('/:id', async(req, res) => {
   try {
-    Question.findOne({ '_id': req.params.id }, function (err, question) {
+    SecurityQuestion.findOne({ '_id': req.params.id }, function (err, securityQuestion) {
       if (err) {
         console.log(err);
         res.status(500).send({
           'message': 'Internal Server Error'
         })
       } else {
-        console.log(question);
-        question.set({
+        console.log(securityQuestion);
+        securityQuestion.set({
           text: req.body.text
         });
-        question.save(function(err, updatedQuestion) {
+        securityQuestion.save(function(err, updatedSecurityQuestion) {
           if (err) {
             console.log(err);
             res.status(500).send({
               'message': 'Internal Server Error'
             })
           } else {
-            console.log(updatedQuestion);
-            res.json(updatedQuestion)
+            console.log(updatedSecurityQuestion);
+            res.json(updatedSecurityQuestion)
           }
         })
       }

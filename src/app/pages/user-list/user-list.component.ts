@@ -13,6 +13,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
 
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -22,12 +23,12 @@ export class UserListComponent implements OnInit {
 //Create user variable and get to User item.
   users: User[];
   //Set display columns
-  displayColumns= ['userName', 'firstName', "lastName", 'phoneNumber', 'address', 'email', 'functions'];
+  displayedColumns= ['userName', 'firstName', "lastName", 'phoneNumber', 'address', 'email', 'functions'];
 
   constructor(private dialog: MatDialog, private userService: UserService) {
   //Call findAllUsers()
   this.userService.findAllUsers().subscribe( res => {
-    this.users = res ['data'];
+    this.users = res['data'];
     console.log(this.users);
   }, err => {
     console.log(err);
@@ -52,7 +53,7 @@ export class UserListComponent implements OnInit {
       if (result === 'confirm') {
         this.userService.deleteUser(userId).subscribe(res => {
           console.log('User delete');
-          this.users = this.users.filter(u => u._id !==userId);
+          this.users = this.users.filter(u => u._id !== userId);
         });
       }
     });

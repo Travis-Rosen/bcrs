@@ -14,5 +14,5 @@ let securityQuestionSchema = new Schema({
   isDisabled: { type: Boolean, default: false }
 },{collection: 'security-questions'});
 
-module.exports = mongoose.model('Question', securityQuestionSchema);
+module.exports = mongoose.model('SecurityQuestion', securityQuestionSchema);
 

@@ -36,6 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatTableModule } from '@angular/material/table'
 //CookieService
 import { CookieService } from 'ngx-cookie-service';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
@@ -74,7 +75,8 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     MatFormFieldModule,
     MatDialogModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

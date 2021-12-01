@@ -12,8 +12,9 @@ import { Component, OnInit } from '@angular/core';
 import { DeleteRecordDialogComponent } from './../../shared/delete-record-dialog/delete-record-dialog.component'
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { SecurityQuestionService } from './../../shared/services/security-question.service';
-import { SecurityQuestion } from './../../shared/interfaces/security-question.interface';
+import { SecurityQuestionService } from 'src/app/shared/services/security-question.service';
+import { SecurityQuestion } from 'src/app/shared/interfaces/security-question.interface';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-security-question-list',
@@ -27,6 +28,7 @@ export class SecurityQuestionListComponent implements OnInit {
   constructor(private dialog: MatDialog, private securityQuestionService: SecurityQuestionService) {
     this.securityQuestionService.findAllSecurityQuestions().subscribe(res => {
       this.securityQuestions = res['data'];
+      console.log(this.securityQuestions);
     }, err => {
       console.log(err);
     });
@@ -40,7 +42,7 @@ export class SecurityQuestionListComponent implements OnInit {
       data: {
         recordId,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody: 'Are you sure you want to delete this security question?'
+        dialogBody: `Are you sure you want to delete this security question?`
       },
       disableClose: true,
       width: '800px'
