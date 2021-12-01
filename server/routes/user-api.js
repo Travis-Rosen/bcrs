@@ -12,6 +12,8 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const User = require('../models/user');
 const RoleSchema = require('../schemas/user-role')
+const BaseResponse = require("../services/base-response");
+const ErrorResponse = require("../services/error-response");
 // Configurations
 const router = express.Router();
 //-----------------------------User API's-----------------------------------------------------//
