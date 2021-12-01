@@ -18,7 +18,7 @@ const SelectedSecurityQuestionSchema = require("../schemas/selected-security-que
 //Create userSchema.
 let userSchema = new Schema({
   //Username and password.
-  username: {type: String, unique: true, dropDups: true},
+  userName: {type: String, unique: true, required: true},
   password: {type: String, required: true},
   //User details.
   firstName: {type: String},
@@ -31,9 +31,8 @@ let userSchema = new Schema({
   role: UserRoleSchema,
   //selectedSecurityQuestions referencing the SelectedSecurityQuestionSchema.
   selectedSecurityQuestions: [SelectedSecurityQuestionSchema],
-
-  date_created: {type: Date, default: new Date()},
-  date_modified: {type: Date},
+  dateCreated: {type: Date, default: new Date()},
+  dateModified: {type: Date},
   }, { collection: 'users'})
 
   //Export the userSchema.

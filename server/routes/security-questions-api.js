@@ -9,11 +9,11 @@
 */
 
 const express = require('express')
-const Question = require('../models/securityQuestionModel');
+const Question = require('../models/security-question');
 const router = express.Router();
 
 //findAll
-router.get('/security-questions', async(req, res) => {
+router.get('/', async(req, res) => {
   try {
     Question.find({ isDisabled: false}, function (err, questions) {
       if (err) {
@@ -35,9 +35,9 @@ router.get('/security-questions', async(req, res) => {
 });
 
 //findById
-router.get('/security-questions/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
   try {
-    Question.findOne({'id': req.params.id}, function(err, question) {
+    Question.findOne({'_id': req.params.id}, function(err, question) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -58,13 +58,13 @@ router.get('/security-questions/:id', async(req, res) => {
 })
 
 //createSecurityQuestion
-router.post('/security-questions', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newQuestion = {
       text: req.body.text
     }
 
-    await Question.create(newQuestion, function(err, question) {
+    Question.create(newQuestion, function(err, question) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -84,9 +84,9 @@ router.post('/security-questions', async (req, res) => {
 })
 
 //updateSecurityQuestions
-router.put('/security-questions/:id', async(req, res) => {
+router.put('/:id', async(req, res) => {
   try {
-    Question.findOne({ 'id': req.params.id }, function (err, question) {
+    Question.findOne({ '_id': req.params.id }, function (err, question) {
       if (err) {
         console.log(err);
         res.status(500).send({
@@ -119,9 +119,9 @@ router.put('/security-questions/:id', async(req, res) => {
 })
 
 //deleteSecurityQuestions
-router.delete('/security-question/:id', async(req, res) => {
+router.delete('/:id', async(req, res) => {
   try {
-    Question.findOne({ 'id': req.params.id }, function (err, question) {
+    Question.findOne({ '_id': req.params.id }, function (err, question) {
       if (err) {
         console.log(err);
         res.status(500).send({

@@ -7,9 +7,30 @@
       <div class="navbar-container">
         <!-- logo -->
         <button class="logo" routerLink="/" mat-button>BCRS</button>
-
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" mat-button>About</button>
+      </div>
+      <div fxFlex></div>
+      <div *ngIf="isLoggedIn">
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu">
+          <mat-icon class="menu">perm_identity</mat-icon>
+        </button>
+        <mat-menu #profileMenu>
+          <p style="padding: 10px;" class="menu">Singed in as {{ userName }}</p>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="userConfig()" class="menu">
+            <mat-icon class="menu">people</mat-icon>
+            <span class="menu">User Configuration</span>
+          </button>
+          <button mat-menu-item (click)="questionConfig()" class="menu">
+            <mat-icon class="menu">security</mat-icon>
+            <span class="menu">Security Question Configuration</span>
+          </button>
+          <button mat-menu-item (click)="signOut()" class="menu">
+            <mat-icon class="menu">logout</mat-icon>
+            <span class="menu">Sign-Out</span>
+          </button>
+        </mat-menu>
       </div>
 
     </mat-toolbar>

@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
 
   signin(): void {
     const userName = this.form.controls.userName.value;
-    const password = this.form.controls.value;
+    const password = this.form.controls.password.value;
 
     this.http.post('/api/session/signin', {
       userName,
@@ -41,7 +41,7 @@ export class SigninComponent implements OnInit {
     }).subscribe(res => {
       console.log(res['data']);
       if (res['data'].userName) {
-        this.cookieService.set('sessionuser', res['data'].userName, 1);
+        this.cookieService.set('session_user', res['data'].userName, 1);
         this.router.navigate(['/']);
       }
     }, err => {

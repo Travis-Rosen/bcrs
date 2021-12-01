@@ -7,10 +7,7 @@
 ;===========================================
 */
 
-
-/**
- * Export Interface
- */
+ //Export Interface
 export interface User {
     _id?: string;
     userName?: string;

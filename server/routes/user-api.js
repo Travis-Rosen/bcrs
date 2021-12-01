@@ -11,8 +11,7 @@
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const User = require('../models/user');
-
-
+const RoleSchema = require('../schemas/user-role')
 // Configurations
 const router = express.Router();
 //-----------------------------User API's-----------------------------------------------------//
@@ -40,11 +39,11 @@ router.get('/', async(req, res) => {
       'message': 'Internal server error'
     })
   }
-})
+});
 
 //----------------------------------------------//
 //findById
-router.get('/:_id', async(req, res) => {
+router.get('/:id', async(req, res) => {
   try{
     //find user by Id
     User.findOne({'_id': req.params._id}, function(err, user) {
@@ -64,7 +63,7 @@ router.get('/:_id', async(req, res) => {
       'message':'Internal server error'
     })
   }
-})
+});
 
 //----------------------------------------------//
 //createUser
@@ -74,63 +73,45 @@ const saltRounds = 10;
 
 //Post request to create new user.
 router.post('/', async(req, res) => {
-    try {
-        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
-        //create variable for newRegisteredUser
-        const newRegisteredUser = {
-            id: req.body.id,
-            userName: req.body.userName,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            email: req.body.email,
-            address: req.body.address,
-        }
-
-        User.findOne({'userName': req.body.userName}, function(err,user){
-            if (err) {
-                console.log(err);
-                res.status(501).send({
-                    'message' : `MongoDB Exception : ${err}`
-                })
-            } else {
-                if(!user){
-                  //Create new user. Will return err or newRegistered user.
-                    User.create(newRegisteredUser, function(err, user) {
-                        if (err) {
-                            console.log(err);
-                            res.status(501).send({
-                                'message': `MongoDB Exception: ${err}`
-                            })
-                        } else {
-                            console.log(user);
-                            res.status(200).send({
-                                'message': `Registered User`
-                            })
-                        }
-                    })
-                    //Error if userName already exists.
-                } else {
-                    console.log(err);
-                    res.status(401).send({
-                        'message': 'Username is already in use'
-                    })
-                }
-            }
-        })
-    } catch (e) {
-        console.log(e);
-        res.status(500).send({
-            'message': `Server Exception: ${e.message}`
-        })
+  try {
+    let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
+    standardRole = {
+      role: 'standard'
     }
-})
+
+    let newUser = {
+      userName: req.body.userName,
+      password: hashedPassword,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      phoneNumber: req.body.phoneNumber,
+      address: req.body.address,
+      email: req.body.email,
+      role: standardRole
+    };
+
+    User.create(newUser, function (err, user) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({
+          'message': 'Internal server error'
+        })
+      } else {
+        console.log(user);
+        res.json(user);
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    res.status(500).send({
+      'message': 'Internal Server Error'
+    })
+  }
+});
 
 //----------------------------------------------//
 //updateUser
-router.put('/:_id', async(req,res) => {
+router.put('/:id', async(req,res) => {
   let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
 
   try {
@@ -144,15 +125,11 @@ router.put('/:_id', async(req,res) => {
         console.log(user);
         //Set user fields.
         user.set({
-          id: req.body.id,
-          userName: req.body.userName,
-          password: hashedPassword,
           firstName: req.body.firstName,
           lastName: req.body.lastName,
           phoneNumber: req.body.phoneNumber,
           email: req.body.email,
           address: req.body.address,
-          isDisabled: req.body.isDisabled,
         });
         //Save the updated user.
         user.save(function(err, updatedUser) {
@@ -177,11 +154,11 @@ router.put('/:_id', async(req,res) => {
       'message': 'Internal server error!'
     })
   }
-})
+});
 
 //----------------------------------------------//
 //deleteUser
-router.delete('/:_id', async(req,res) => {
+router.delete('/:id', async(req,res) => {
   try{
     User.findOne({'_id': req.params._id}, function(err,user){
       if (err) {
@@ -219,7 +196,7 @@ router.delete('/:_id', async(req,res) => {
       'message': 'Internal server error.'
     })
   }
-})
+});
 
 
 

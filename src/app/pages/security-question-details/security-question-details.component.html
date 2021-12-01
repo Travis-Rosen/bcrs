@@ -1,1 +1,28 @@
-<p>security-question-details works!</p>
+<!--
+ ; Title:  security-question-details.component.html
+ ; Author: Group-2
+ ; Date:   29 November 2021
+ ; Description:  security question details config page
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Security Question Details</mat-card-title>
+    <br>
+    <form [formGroup]="form" (ngSubmit)="savedQuestion()" #questionForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput [formControl]="form.controls['text']" placeholder="Security Question Text..." (keydown.enter)="savedQuestion()" />
+            <mat-error class="error" *ngIf="form.controls.text.hasError('required') && form.controls.text.touched">Required Field</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <br>
+      <mat-card-actions align="end">
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

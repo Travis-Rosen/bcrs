@@ -22,8 +22,8 @@ export class AuthGuard implements CanActivate {
 
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const isAuthenticated = this.cookieService.get('sessionuser');
-    if (isAuthenticated) {
+    const sessionUser = this.cookieService.get('session_user');
+    if (sessionUser) {
       return true;
     } else {
       this.router.navigate(['/session/signin']);
