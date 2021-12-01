@@ -39,31 +39,7 @@ router.get('/', async (req,res) => {
   }
 });
 
-/*
-router.get('/', async(req, res) => {
-  try{
-    //Query users to find users in which isDisabled is false.
-    User.find({ isDisabled : false }, function(err, users) {
-      //Log err
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          'message':'Internal server error'
-        })
-        //Return users and log to console
-      } else {
-        console.log(users);
-        res.json(users);
-      }
-    })
-  } catch (e){
-    console.log(e);
-    res.status(500).send({
-      'message': 'Internal server error'
-    })
-  }
-});
-*/
+
 
 //----------------------------------------------//
 //findById

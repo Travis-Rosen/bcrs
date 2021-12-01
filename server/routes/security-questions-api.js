@@ -35,29 +35,7 @@ router.get('/', async(req, res) => {
   }
 })
 
-/*
-//findAll
-router.get('/', async(req, res) => {
-  try {
-    SecurityQuestion.find({ isDisabled: false}, function (err, securityQuestions) {
-      if (err) {
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal Server Error'
-        })
-      } else {
-        console.log(securityQuestions);
-        res.json(securityQuestions);
-      }
-    })
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({
-      'message': 'Internal Server Error'
-    })
-  }
-});
-*/
+
 
 //findById
 router.get('/:id', async(req, res) => {
@@ -146,26 +124,26 @@ router.put('/:id', async(req, res) => {
 //deleteSecurityQuestions
 router.delete('/:id', async(req, res) => {
   try {
-    Question.findOne({ '_id': req.params.id }, function (err, question) {
+    SecurityQuestion.findOne({ '_id': req.params.id }, function (err, securityQuestion) {
       if (err) {
         console.log(err);
         res.status(500).send({
           'message': 'Internal Server Error'
         })
       } else {
-        console.log(question);
-        question.set({
+        console.log(securityQuestion);
+        securityQuestion.set({
           isDisabled: true
         });
-        question.save(function(err, disabledQuestion) {
+        securityQuestion.save(function(err, disabledSecurityQuestion) {
           if (err) {
             console.log(err);
             res.status(500).send({
               'message': 'Internal Server Error'
             })
           } else {
-            console.log(disabledQuestion);
-            res.json(updatedQuestion)
+            console.log(disabledSecurityQuestion);
+            res.json(disabledSecurityQuestion)
           }
         })
       }
