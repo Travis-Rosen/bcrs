@@ -40,6 +40,7 @@ import { MatTableModule } from '@angular/material/table'
 //CookieService
 import { CookieService } from 'ngx-cookie-service';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
 
 
 
@@ -58,6 +59,7 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     SecurityQuestionListComponent,
     SecurityQuestionDetailsComponent,
     SecurityQuestionsCreateComponent,
+    ServerErrorComponent,
   ],
   imports: [
     BrowserModule,
