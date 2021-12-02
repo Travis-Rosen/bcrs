@@ -7,6 +7,7 @@ Description: Routing page
 
 //Imports
 import { HomeComponent } from './pages/home/home.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/auth.guard';
 import { SigninComponent } from './pages/signin/signin.component'
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'about',
+        component: AboutUsComponent
       },
       {
         path: 'users',
@@ -55,7 +60,7 @@ const routes: Routes = [
         component: SecurityQuestionsCreateComponent,
       },
     ],
-      
+
     canActivate: [AuthGuard]
   },
   {
