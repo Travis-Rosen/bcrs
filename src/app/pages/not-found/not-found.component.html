@@ -1,1 +1,27 @@
-<p>not-found works!</p>
+<!--
+=============================================================
+; Title:  not-found.component.html
+; Author: group 2
+; Date:   03 December 2021
+; Description: not-found component
+=============================================================
+-->
+
+<br /> <br /> <br />
+<div fxLayout="column" fxLayoutAlign="center center">
+
+    <mat-card fxFlex class="mat-elevation-z8">
+        <!-- Notify the user of the error -->
+        <mat-card-title class="statusCode">404</mat-card-title>
+        <br />    <br />
+        <mat-card-content fxLayout="column">
+            <div fxLayout="row" gdAlignRows="center"><img src="../../../assets/server-error.png"  width="350px" height="300px"></div>
+            <h1>Page Not Found</h1>
+
+            <br />
+            <!-- Create the button for the user to click to reload the home page -->
+            <button gdAlignRows="center" mat-raised-button color="primary" routerLink="/">Return to Dashboard</button>
+        </mat-card-content>
+
+    </mat-card>
+</div>

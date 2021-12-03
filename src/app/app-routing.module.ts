@@ -22,6 +22,8 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { ContactComponent } from './pages/contact/contact.component';
+
 
 const routes: Routes = [
   {
@@ -34,7 +36,11 @@ const routes: Routes = [
       },
       {
         path: 'about',
-        component: AboutUsComponent
+        component: AboutUsComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
       },
       {
         path: 'users',

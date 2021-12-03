@@ -43,6 +43,7 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 
@@ -64,6 +65,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     ServerErrorComponent,
     ResetPasswordFormComponent,
     AboutUsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

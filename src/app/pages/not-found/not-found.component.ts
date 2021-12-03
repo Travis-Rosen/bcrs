@@ -1,3 +1,10 @@
+/*
+ ; Title:  not-found.component.ts
+ ; Author: Group-2
+ ; Date:   03 December 2021
+ ; Description: not-found component
+*/
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({

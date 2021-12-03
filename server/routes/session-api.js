@@ -121,7 +121,6 @@ router.post('/register', async(req, res) => {
                     } else {
                         console.log(`Username ${req.body.userName} already exists.`);
                         const userExistsError = new BaseResponse('400', `The username '${req.body.userName}' is already in use.`, null);
-                        const userExistsError = new BaseResponse('400', `The username '${req.body.userName}' is already in exists.`, null);
                         res.status(400).send(userExistsError.toObject());
                     }
                 }
