@@ -21,6 +21,7 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,10 @@ const routes: Routes = [
       {
         path: 'not-found',
         component: NotFoundComponent
+      },
+      {
+        path: '500',
+        component: ServerErrorComponent,
       }
     ]
   },
