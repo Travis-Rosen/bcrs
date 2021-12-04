@@ -9,32 +9,38 @@
 
 /*align-center styling*/
 .align-center {
-    text-align: center;
-    font-weight: bolder;
-  }
-  
+  text-align: center;
+  font-weight: bolder;
+}
+
 /*main-header font-size and color styling*/
-  .main-header {
-    font-size: 28px;
-    color: #00008b;
-  }
-  
-  /*contact-container styling*/
-  .contact-container {
-    width: 100%;
-    padding-top: 30px;
-  }
+.main-header {
+  font-size: 28px;
+  color: #00008b;
+}
 
- /*card-title-icon and mat-icon styling*/
-  .card-title-icon, .mat-icon {
-    font-size: 52px;
-    color: #333333;
-    margin-bottom:10px;
-  }
-  
-  /*mat-card-content styling*/
+/*contact-container styling*/
+.contact-container {
+  width: 100%;
+  padding-top: 20px;
+}
 
-  .mat-card-content{
-    color:#31282d;
-    font-size:14px;
-  }
+/*card-title-icon and mat-icon styling*/
+.card-title-icon, .mat-icon {
+  font-size: 72px;
+  color: #333333;
+  margin-bottom:10px;
+}
+
+/*mat-card-content styling*/
+
+.mat-card-content{
+  color:#31282d;
+  font: size 22px;
+}
+
+/*p styling*/
+
+p{
+  font-size: 12px;
+}
