@@ -18,7 +18,12 @@
           <mat-icon class="menu">perm_identity</mat-icon>
         </button>
         <mat-menu #profileMenu>
-          <p style="padding: 10px;" class="menu">Singed in as {{ userName }}</p>
+          <p style="padding: 10px;" class="menu">Singed in as 
+              <span
+                style="color: #0401a3; ; font-size: large"
+              >{{ username }}</span
+          >
+      </p>
           <mat-divider></mat-divider>
           <button mat-menu-item (click)="userConfig()" class="menu">
             <mat-icon class="menu">people</mat-icon>

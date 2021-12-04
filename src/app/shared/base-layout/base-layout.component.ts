@@ -11,7 +11,7 @@ export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
   isLoggedIn: boolean;
-  userName: string;
+  username: string;
 
   constructor(private cookieService: CookieService, private router: Router) {
     this.isLoggedIn = this.cookieService.get('session_user') ? true : false;
@@ -21,9 +21,7 @@ export class BaseLayoutComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('inside the ngOnInit of the base-layout.component.html file');
-    this.userName = sessionStorage.getItem('userName');
-    console.log('Logged in username ' + this.userName);
+    this.username = this.cookieService.get('session_user');
   }
 
   userConfig(): void {
