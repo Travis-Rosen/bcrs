@@ -28,7 +28,8 @@ export class UserListComponent implements OnInit {
   constructor(private dialog: MatDialog, private userService: UserService) {
   //Call findAllUsers()
   this.userService.findAllUsers().subscribe( res => {
-    this.users = res['data'];
+    console.log(res)
+    this.users = res
     console.log(this.users);
   }, err => {
     console.log(err);
