@@ -69,7 +69,7 @@
  });
 
  /**
- * Sprint 2 
+ * Sprint 2
  * API:  Register
  **/
 
@@ -90,8 +90,8 @@ router.post('/register', async(req, res) => {
                         standardRole = {
                             role: "standard",
                         }
-                
-                        // user object 
+
+                        // user object
                         let registeredUser = {
                             userName: req.body.userName,
                             password: hashedPassword,
@@ -146,7 +146,7 @@ router.get('/verify/users/:userName', async(req, res) => {
                   console.log(err);
                   const verifyUserMongodbErrorResponse = new ErrorResponse('500', "Internal server error", err );
                   res.status(500).send(verifyUserMongodbErrorResponse.toObject());
-                }    
+                }
                else {
                  console.log(user);
                  const verifyUserResponse = new BaseResponse('200', 'User verification successful', user);
@@ -165,3 +165,96 @@ router.get('/verify/users/:userName', async(req, res) => {
     }
 });
  module.exports = router;
+
+//verifySecurityQuestions
+router.post('/verify/users/:userName/security-questions', async(req, res) => {
+  try {
+    User.findOne({'userName': req.params.userName}, function(err, user) {
+      if (err) {
+        console.log(err);
+        const verifySecurityQuestionMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        resizeTo.status(500).send(verifySecurityQuestionMongoDbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
+        const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText2);
+        const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText3);
+
+        const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
+        const isValidAnswerTwo = selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+        const isValidAnswerThree = selectedSecurityQuestionThree.answerText === req.body.answerText3;
+
+        if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
+          console.log(`User ${user.userName} answered their security questions correctly`);
+          const validSecurityQuestionResponse = new BaseResponse('200', 'success', user);
+          res.json(validSecurityQuestionResponse.toObject());
+        } else {
+          console.log(`User ${user.userName} did not answer the security questions correctly`);
+          const invalidSecurityQuestionResponse = new BaseResponse('200', 'error', user);
+          res.json(invalidSecurityQuestionResponse.toObject());
+
+        }
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    const verifySecurityQuestionCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e.message);
+    res.status(500).send(verifySecurityQuestionCatchErrorResponse.toObject());
+  }
+});
+
+//resetPassword
+router.post('/users/:/userName/reset-password', async(req, res) => {
+  try {
+    const password = req.body.password;
+    User.findOne({'userName': req.params.userName}, function(err, user) {
+      if (err) {
+        console.log(err);
+        const resetPasswordMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(resetPasswordMongoDbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        let hashedPassword = bcrypt.hashSync(password, saltRounds);
+        user.set({
+          password: hashedPassword
+        });
+        user.save(function(err, updatedUser) {
+          if (err) {
+            console.log(err);
+            const updatedUserMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+            res.status(500).send(updatedUserMongoDbErrorResponse.toObject());
+          } else {
+            console.log(updatedUser);
+            const updatedPasswordResponse = new BaseResponse('200', 'Update Successful', updatedUser);
+            res.json(updatedPasswordResponse.toObject());
+          }
+        })
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    const resetPasswordCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
+    res.status(500).send(resetPasswordCatchErrorResponse.toObject());
+  }
+});
+
+//findSelectedSecurityQuestions
+router.get('/:userName/security-questions', async (req,res) => {
+  try {
+    User.findOne({'userName': req.params.userName}, function(err, user) {
+      if (err) {
+        console.log(err);
+        const findSelectedSecurityQuestionsMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(findSelectedSecurityQuestionsMongoDbErrorResponse.toObject());
+      } else {
+        console.log(user);
+        const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query Successful', user);
+        res.json(findSelectedSecurityQuestionsResponse.toObject());
+      }
+    })
+  } catch (e) {
+    console.log(e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
+    res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
+  }
+});
