@@ -23,6 +23,10 @@ import { SecurityQuestionDetailsComponent } from './pages/security-question-deta
 import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 
 
 const routes: Routes = [
@@ -77,6 +81,22 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsFormComponent,
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordFormComponent
       },
       {
         path: 'not-found',

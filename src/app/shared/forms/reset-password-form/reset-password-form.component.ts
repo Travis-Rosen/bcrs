@@ -17,12 +17,13 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./reset-password-form.component.css']
 })
 export class ResetPasswordFormComponent implements OnInit {
-
+  isAuthenticated: string;
   userName: string;
   form: FormGroup;
 
   constructor(private http:HttpClient, private fb:FormBuilder,
   private router:Router, private route:ActivatedRoute, private cookieService: CookieService) {
+    this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');
     this.userName = this.route.snapshot.queryParamMap.get('userName');
    }
 
@@ -32,6 +33,17 @@ export class ResetPasswordFormComponent implements OnInit {
     this.form = this.fb.group({
       userName: [null, Validators.compose([Validators.required])],
       password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
+    });
+  }
+  //Reset password function calling reset api
+  resetPassword() {
+    this.http.post('/api/session/users/' + this.userName + '/reset-password', {
+      password: this.form.controls['password'].value
+    }).subscribe(res => {
+      this.cookieService.set('sessionuser', this.userName, 1);
+      this.router.navigate(['/']);
+    }, err => {
+      console.log(err);
     });
   }
 }
