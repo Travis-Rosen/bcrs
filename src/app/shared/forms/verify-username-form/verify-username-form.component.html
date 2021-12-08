@@ -28,12 +28,12 @@ Desc: html page for verifying user
       <mat-card-title class="mat-headline verify-title">Forgot Password</mat-card-title>
       <br><br>
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
-      <form [formGroup]="form" (ngSubmit)="validateUsername()" #userNameForm>
+      <form [formGroup]="form" (ngSubmit)="validateUsername()" #usernameForm>
         <mat-card-content fxLayout="column">
           <mat-form-field fxFlex appearance="fill">
             <mat-label>Username<span class="required">*</span></mat-label>
-            <input matInput [formControl]="form.controls['userName']" />
-            <mat-error class="error" *ngIf="form.controls['userName'].hasError('required') && form.controls['userName'].touched">
+            <input matInput [formControl]="form.controls['username']" />
+            <mat-error class="error" *ngIf="form.controls['username'].hasError('required') && form.controls['username'].touched">
               Username Is A Required Field
             </mat-error>
           </mat-form-field>

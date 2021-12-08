@@ -12,6 +12,7 @@
  const ErrorResponse = require('../services/error-response');
  const BaseResponse = require('../services/base-response');
 
+
  // Configurations
  const router = express.Router();
  const saltRounds = 10; //default salt rounds for password hashing
@@ -138,7 +139,7 @@ router.post('/register', async(req, res) => {
  */
 router.get('/verify/users/:userName', async(req, res) => {
     try {
-        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+        User.findOne({'userName': req.params.userName }, function(err, user) {
 
             if (user) {
                 if (err)
