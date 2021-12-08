@@ -8,7 +8,9 @@
         <!-- logo -->
         <button class="logo" routerLink="/" mat-button>BCRS</button>
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <button class="navbar-link" routerLink="/about" mat-button>About</button>
+        <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
+
       </div>
       <div fxFlex></div>
       <div *ngIf="isLoggedIn">
@@ -16,7 +18,12 @@
           <mat-icon class="menu">perm_identity</mat-icon>
         </button>
         <mat-menu #profileMenu>
-          <p style="padding: 10px;" class="menu">Singed in as {{ userName }}</p>
+          <p style="padding: 10px;" class="menu">Singed in as 
+              <span
+                style="color: #0401a3; ; font-size: large"
+              >{{ username }}</span
+          >
+      </p>
           <mat-divider></mat-divider>
           <button mat-menu-item (click)="userConfig()" class="menu">
             <mat-icon class="menu">people</mat-icon>

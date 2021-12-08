@@ -2,7 +2,8 @@
  ; Title:  error-response.js
  ; Author: Group-2
  ; Date:   27 November 2021
- ; Description: error response back an error occur in processing */
+ ; Description: error response back an error occur in processing 
+ */
 
  //ErrorResponse class with httpcode, message and data attributes.
  class ErrorResponse{

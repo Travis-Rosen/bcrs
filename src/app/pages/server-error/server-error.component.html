@@ -1,9 +1,9 @@
 <!--
 =============================================================
-; Title:  not-found.component.html
+; Title:  server-error.component.html
 ; Author: group 2
-; Date:   03 December 2021
-; Description: not-found component
+; Date:   02 December 2021
+; Description: server-error component
 =============================================================
 -->
 
@@ -12,11 +12,11 @@
 
     <mat-card fxFlex class="mat-elevation-z8">
         <!-- Notify the user of the error -->
-        <mat-card-title class="statusCode">404</mat-card-title>
+        <mat-card-title class="statusCode">500</mat-card-title>
         <br />    <br />
         <mat-card-content fxLayout="column">
             <div fxLayout="row" gdAlignRows="center"><img src="../../../assets/server-error.png"  width="350px" height="300px"></div>
-            <h1>Page Not Found</h1>
+            <h1>Internal Server Error.</h1>
 
             <br />
             <!-- Create the button for the user to click to reload the home page -->

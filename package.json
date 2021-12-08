@@ -14,7 +14,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.4",
-    "@angular/cdk": "^11.2.3",
+    "@angular/cdk": "^11.2.13",
     "@angular/cli": "~11.2.3",
     "@angular/common": "~11.2.4",
     "@angular/compiler": "~11.2.4",
@@ -34,6 +34,7 @@
     "mongoose": "^5.10.5",
     "morgan": "^1.10.0",
     "ngx-cookie-service": "^11.0.2",
+    "primeng": "^11.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

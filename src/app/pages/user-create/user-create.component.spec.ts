@@ -1,3 +1,10 @@
+/*
+ ; Title:  user-create.component.spec.ts
+ ; Author: Group-2
+ ; Date:   29 November 2021
+ ; Description: user component
+*/
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserCreateComponent } from './user-create.component';

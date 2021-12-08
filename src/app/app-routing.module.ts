@@ -7,6 +7,7 @@ Description: Routing page
 
 //Imports
 import { HomeComponent } from './pages/home/home.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/auth.guard';
 import { SigninComponent } from './pages/signin/signin.component'
@@ -20,6 +21,13 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionsCreateComponent } from './pages/security-questions-create/security-questions-create.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
+import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
+
 
 const routes: Routes = [
   {
@@ -29,6 +37,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'about',
+        component: AboutUsComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
       },
       {
         path: 'users',
@@ -55,7 +71,7 @@ const routes: Routes = [
         component: SecurityQuestionsCreateComponent,
       },
     ],
-      
+
     canActivate: [AuthGuard]
   },
   {
@@ -67,8 +83,28 @@ const routes: Routes = [
         component: SigninComponent
       },
       {
+        path: 'register',
+        component: RegisterComponent
+      },
+      {
+        path: 'forgot',
+        component: VerifyUsernameFormComponent
+      },
+      {
+        path: 'verify-security-questions',
+        component: VerifySecurityQuestionsFormComponent,
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordFormComponent
+      },
+      {
         path: 'not-found',
         component: NotFoundComponent
+      },
+      {
+        path: '500',
+        component: ServerErrorComponent,
       }
     ]
   },

@@ -1,0 +1,41 @@
+/*<!--
+ ; Title:  About Us Page
+ ; Author: Group-2
+ ; Date:   06 Decemeber 2021
+ ; Description:  About Us-- html page.
+-->*/
+
+/* Styling for image*/
+img {
+  width: 500px;
+  height: auto;
+  float:left;
+  margin-right: 30px;
+  box-shadow: 5px 5px 5px gray;
+}
+
+/*Font styling*/
+p{
+  font-size: 18px;
+  line-height: 23px;
+}
+
+/*Styling for text*/
+.aboutUsText {
+  width: auto;
+  margin-left: 15px;
+  padding: 10px;
+}
+/*Styling for mat-card*/
+.mat-card {
+  height: 500px;
+  width: auto;
+  margin: 20px;
+}
+/*Styling for title*/
+.mat-card-title {
+  margin-top: 25px;
+  font-size: 30px;
+  padding: 3px;
+  text-decoration: underline;
+}
