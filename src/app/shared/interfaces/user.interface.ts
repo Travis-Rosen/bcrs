@@ -7,6 +7,8 @@
 ;===========================================
 */
 
+import { Role } from './../interfaces/role.interface';
+
  //Export Interface
 export interface User {
     _id?: string;
@@ -17,4 +19,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
+    role?: Object;
 }

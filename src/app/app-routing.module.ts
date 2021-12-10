@@ -27,6 +27,10 @@ import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleGuard } from './shared/role.guard';
 
 
 const routes: Routes = [
@@ -49,6 +53,7 @@ const routes: Routes = [
       {
         path: 'users',
         component: UserListComponent,
+        
       },
       {
         path: 'users/:userId',
@@ -70,6 +75,18 @@ const routes: Routes = [
         path: 'security-questions/create/new',
         component: SecurityQuestionsCreateComponent,
       },
+      {
+        path: "roles",
+        component: RoleListComponent,
+      },
+      {
+        path: "roles/create/new",
+        component: RoleCreateComponent,
+      },
+      {
+        path: "roles/:roleId",
+        component: RoleDetailsComponent,
+      }
     ],
 
     canActivate: [AuthGuard]
@@ -80,15 +97,15 @@ const routes: Routes = [
     children: [
       {
         path: 'signin',
-        component: SigninComponent
+        component: SigninComponent,
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
       },
       {
         path: 'forgot',
-        component: VerifyUsernameFormComponent
+        component: VerifyUsernameFormComponent,
       },
       {
         path: 'verify-security-questions',
@@ -96,11 +113,11 @@ const routes: Routes = [
       },
       {
         path: 'reset-password',
-        component: ResetPasswordFormComponent
+        component: ResetPasswordFormComponent,
       },
       {
         path: 'not-found',
-        component: NotFoundComponent
+        component: NotFoundComponent,
       },
       {
         path: '500',

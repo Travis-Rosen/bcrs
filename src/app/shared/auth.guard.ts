@@ -6,12 +6,9 @@ Description: Authorization file for sign in
 */
 
 
-
-
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -22,8 +19,8 @@ export class AuthGuard implements CanActivate {
 
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const sessionUser = this.cookieService.get('session_user');
-    if (sessionUser) {
+    const isLoggedIn = this.cookieService.get('session_user');
+    if (isLoggedIn) {
       return true;
     } else {
       this.router.navigate(['/session/signin']);
