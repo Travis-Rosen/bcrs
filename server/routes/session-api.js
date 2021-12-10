@@ -12,6 +12,7 @@
  const ErrorResponse = require('../services/error-response');
  const BaseResponse = require('../services/base-response');
 
+
  // Configurations
  const router = express.Router();
  const saltRounds = 10; //default salt rounds for password hashing
@@ -138,7 +139,7 @@ router.post('/register', async(req, res) => {
  */
 router.get('/verify/users/:userName', async(req, res) => {
     try {
-        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+        User.findOne({'userName': req.params.userName }, function(err, user) {
 
             if (user) {
                 if (err)
@@ -238,23 +239,4 @@ router.post('/users/:/userName/reset-password', async(req, res) => {
   }
 });
 
-//findSelectedSecurityQuestions
-router.get('/:userName/security-questions', async (req,res) => {
-  try {
-    User.findOne({'userName': req.params.userName}, function(err, user) {
-      if (err) {
-        console.log(err);
-        const findSelectedSecurityQuestionsMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
-        res.status(500).send(findSelectedSecurityQuestionsMongoDbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query Successful', user);
-        res.json(findSelectedSecurityQuestionsResponse.toObject());
-      }
-    })
-  } catch (e) {
-    console.log(e);
-    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
-    res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
-  }
-});
+

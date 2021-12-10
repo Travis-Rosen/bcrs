@@ -23,15 +23,15 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   question1: string;
   question2: string;
   question3: string;
-  userName: string;
+  username: string;
   form: FormGroup;
   errorMessages: Message[];
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) {
-    this.userName = this.route.snapshot.queryParamMap.get('userName');
-    console.log(this.userName);
+    this.username = this.route.snapshot.queryParamMap.get('username');
+    console.log(this.username);
     //Calling api to get secuirty quesions
-    this.http.get('/api/users' + this.userName + '/security-questions').subscribe(res => {
+    this.http.get('/api/users/' + this.username + '/security-questions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
       console.log(this.selectedSecurityQuestions);
       console.log(res);
@@ -66,7 +66,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
     console.log(answerToSecurityQuestion2);
     console.log(answerToSecurityQuestion3);
 
-    this.http.post('/api/session/verify/users/' + this.userName + '/security-questions', {
+    this.http.post('/api/session/verify/users/' + this.username + '/security-questions', {
       questionText1: this.question1,
       questionText2: this.question2,
       questionText3: this.question3,
@@ -76,7 +76,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
     }).subscribe(res => {
       console.log(res);
       if (res['message'] === 'success') {
-        this.router.navigate(['/session/reset=password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
+        this.router.navigate(['/session/reset=password'], {queryParams: {isAuthenticated: 'true', username: this.username}, skipLocationChange: true});
       } else {
         this.errorMessages = [
           {severity: 'error', summary: 'Error', detail: 'Unable to verify security questions'}

@@ -27,10 +27,7 @@ Description: HTML page for user log in page
         <mat-card-title class="login-title" style="text-align: center; font-size: 48px; font-weight: lighter;">
           Employee Login
         </mat-card-title>
-        <br>
-        <mat-card-subtitle class="create-title" style="text-align: center; font-weight: lighter;">
-          <a routerLink="/" class="create-link">Need to create an account?</a>
-        </mat-card-subtitle>
+        <br><br>
         <mat-card-subtitle class="valid-title" style="text-align: center;">Please enter a valid username/password to proceed</mat-card-subtitle>
         <mat-card-content>
           <small  style="color: red;"  *ngIf="errorMessage"> {{ errorMessage }}</small>
@@ -50,10 +47,13 @@ Description: HTML page for user log in page
                     Password must be at least 8 characters, contain one number, and one letter.
                   </mat-error>
                 </mat-form-field>
+                <a routerLink="/session/forgot" style="text-decoration: none; color:gray" class="help-link" align="end">Forgot Password?</a>
               </mat-card-content>
               <mat-card-actions>
                 <button type="submit" [disabled]="!form.valid" fxFlex mat-raised button color="accent">Submit</button>
+
               </mat-card-actions>
+              <p style="text-align: center; font-weight: lighter;">Don't have an account? <a routerLink="/session/register" style="text-decoration: none;" class="help-link" color="primary">Sign-up</a></p>
             </form>
           </mat-card>
         </mat-card-content>

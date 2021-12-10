@@ -28,13 +28,13 @@ Desc: html page for verifying security questions
       <mat-card-title class="mat-headline question-title">Verify Security Questions</mat-card-title>
       <br><br>
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
-      <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestions()" #userNameForm>
+      <form *ngIf="selectedSecurityQuestions" [formGroup]="form" (ngSubmit)="verifySecurityQuestion()" #usernameForm>
         <mat-card-content fxLayout="column">
 
           <!--Security Question 1 form-->
           <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ question1 }}<span class="required">*</span></mat-label>
-            <input mat-input [formControl]="form.controls['answerToSecurityQuestion1']" />
+            <input matInput [formControl]="form.controls['answerToSecurityQuestion1']" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion1'].hasError('required') && form.controls['answerToSecurityQuestion1'].touched">
               This Is A Required Field.
             </mat-error>
@@ -43,7 +43,7 @@ Desc: html page for verifying security questions
           <!--Security Question 2 Form-->
           <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ question2 }}<span class="required">*</span></mat-label>
-            <input mat-input [formControl]="form.controls['answerToSecurityQuestion2']" />
+            <input matInput [formControl]="form.controls['answerToSecurityQuestion2']" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion2'].hasError('required') && form.controls['answerToSecurityQuestion2'].touched">
               This Is A Required Field.
             </mat-error>
@@ -52,7 +52,7 @@ Desc: html page for verifying security questions
           <!--Security Question 3 Form-->
           <mat-form-field fxFlex appearance="fill">
             <mat-label>{{ question3 }}<span class="required">*</span></mat-label>
-            <input mat-input [formControl]="form.controls['answerToSecurityQuestion3']" />
+            <input matInput [formControl]="form.controls['answerToSecurityQuestion3']" />
             <mat-error class="error" *ngIf="form.controls['answerToSecurityQuestion3'].hasError('required') && form.controls['answerToSecurityQuestion3'].touched">
               This Is A Required Field.
             </mat-error>

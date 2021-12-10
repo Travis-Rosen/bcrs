@@ -28,15 +28,15 @@ export class VerifyUsernameFormComponent implements OnInit {
    //Defining form group
   ngOnInit(): void {
     this.form = this.fb.group({
-      userName: [null, Validators.compose([Validators.required])]
+      username: [null, Validators.compose([Validators.required])]
     });
   }
   //Validate username function // calling verify api
   validateUsername() {
-    const userName = this.form.controls['userName'].value;
-    this.http.get('/api/session/verify/users' + userName).subscribe(res => {
+    const username = this.form.controls['username'].value;
+    this.http.get('/api/session/verify/users/' + username).subscribe(res => {
       console.log(res);
-      this.router.navigate(['/session/verify-security-questions'], {queryParams: {userName: userName}, skipLocationChange: true});
+      this.router.navigate(['/session/verify-security-questions'], {queryParams: {username: username}, skipLocationChange: true});
     }, err => {
       this.errorMessages = [
         {severity: 'error', summary: 'Error', detail: err['message']}
