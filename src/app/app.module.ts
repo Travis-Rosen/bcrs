@@ -55,6 +55,23 @@ import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
 
 
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+
+
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +94,10 @@ import { ErrorInterceptor } from './shared/error.interceptor';
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
     VerifyUsernameFormComponent,
+    RoleCreateComponent,
+    RoleDetailsComponent,
+    RoleListComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -100,7 +121,12 @@ import { ErrorInterceptor } from './shared/error.interceptor';
     MatListModule,
     MatStepperModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    MatCheckboxModule,
+    TableModule,    
+    ChartModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [
     {

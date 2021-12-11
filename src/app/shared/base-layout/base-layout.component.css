@@ -1,9 +1,19 @@
+/*
+ ; Title:  base-layout.component.css
+ ; Author: Group-2
+ ; Date:   27 November 2021
+ ; Description: Styling for base-layout.component.html.
+*/
+
 .logo {
     margin-left: 75px;
     font-size: 24px;
     font-weight: lighter;;
   }
   
+  nav, mat-toolbar {
+    width: 100%;
+  }
   .navbar-container {
     padding: 5px;
   }
@@ -18,8 +28,8 @@
   }
   
   .footer {
+    padding-top: 2%;
     bottom: 0;
-    position: absolute;
     width: 100%;
   }
   
@@ -38,3 +48,9 @@
     text-decoration: underline;
   }
   
+   /* page-container position styling  */
+.page-container {
+  height: 100%;
+  position: absolute;
+  width: 100%;  
+}

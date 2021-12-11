@@ -11,9 +11,11 @@
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const User = require('../models/user');
-const RoleSchema = require('../schemas/user-role');
-const ErrorResponse = require('../services/error-response');
-const BaseResponse = require('../services/base-response');
+const RoleSchema = require('../schemas/user-role')
+const BaseResponse = require("../services/base-response");
+const ErrorResponse = require("../services/error-response");
+//saltRounds variable
+const saltRounds = 10;
 
 // Configurations
 const router = express.Router();
@@ -45,33 +47,41 @@ router.get('/', async (req,res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/:id', async(req, res) => {
-  try{
-    //find user by Id
-    User.findOne({'_id': req.params.id}, function(err, user) {
+router.get("/:id", async (req, res) => {
+  try {
+    User.findOne({ _id: req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error'
-        })
+        const findByIdMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(findByIdMongodbErrorResponse.toObject());
       } else {
         console.log(user);
-        res.json(user);
+        const findByIdResponse = new BaseResponse(
+          200,
+          "Query successful",
+          user
+        );
+        res.json(findByIdResponse.toObject());
       }
-    })
-  } catch(e) {
+    });
+  } catch (e) {
     console.log(e);
-    res.status(500).send({
-      'message':'Internal server error'
-    })
+    const findByIdCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e
+    );
+    res.status(500).send(findByIdCatchErrorResponse.toObject());
   }
 });
 
 //----------------------------------------------//
 //createUser
 
-//saltRounds variable
-const saltRounds = 10;
 
 //Post request to create new user.
 router.post('/', async(req, res) => {
@@ -130,9 +140,15 @@ router.put('/:id', async(req,res) => {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
           phoneNumber: req.body.phoneNumber,
-          email: req.body.email,
           address: req.body.address,
+          email: req.body.email,
         });
+
+                //user role
+        user.role.set({
+          role: req.body.role
+        });
+
         //Save the updated user.
         user.save(function(err, updatedUser) {
           if (err) {
@@ -201,26 +217,71 @@ router.delete('/:id', async(req,res) => {
 });
 
 
-//findSelectedSecurityQuestions
-router.get('/:userName/security-questions', async (req,res) => {
+/**
+ * FindSelectedSecurityQuestions
+ */
+ router.get("/:userName/security-questions", async (req, res) => {
   try {
-    User.findOne({'userName': req.params.userName}, function(err, user) {
+    User.findOne({ 'userName': req.params.userName}, function(err, user) {
       if (err) {
         console.log(err);
-        const findSelectedSecurityQuestionsMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
-        res.status(500).send(findSelectedSecurityQuestionsMongoDbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query Successful', user);
-        res.json(findSelectedSecurityQuestionsResponse.toObject());
-      }
-    })
-  } catch (e) {
+        const findSelectedSelectedSecurityQuestionsMongodbErrorResponse =
+          new ErrorResponse("500", "Internal server error", err);
+        res.status(500).send(findSelectedSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+      } else 
+      {
+        if (user.selectedSecurityQuestions.length > 0) {
+            console.log(user);
+            const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+            res.json(findSelectedSecurityQuestionsResponse.toObject());
+          } 
+          else {
+            console.log('Account created through the user configuration page and does not have assigned security questions.');
+            console.log(user);
+            const accountCreatedUsingAdmin = new ErrorResponse(400, `Please contact support to reset.`, null);
+            res.status(400).send(accountCreatedUsingAdmin.toObject());
+          }
+        }
+      })
+    } catch (e) 
+    {
     console.log(e);
-    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
+    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse("500","Internal server error", e);
     res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
   }
 });
+
+/**
+ * findUserRole
+ */
+
+router.get('/:userName/role', async (req, res) => {
+   try
+   {
+     User.findOne({'userName': req.params.userName}, function(err, user)
+     {
+       if (err)
+       {
+         console.log(err);
+         const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+         res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+       }
+       else
+       {
+         console.log(user);
+         const findUserRoleResponse = new BaseResponse('200', 'Query successful', user.role);
+         res.json(findUserRoleResponse.toObject());
+       }
+     })
+   }
+   catch(e)
+   {
+     console.log(e);
+     const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+     res.status(500).send(findUserRoleCatchErrorResponse.toObject());
+   }
+})
+
 
 
 //Export the router
