@@ -124,15 +124,11 @@ router.post('/', async(req, res) => {
 //----------------------------------------------//
 //updateUser
 router.put('/:id', async(req,res) => {
-  let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
   try {
     User.findOne({'_id': req.params.id}, function(err, user) {
       if (err){
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error!'
-        })
+        const updateRoleMongodbErrorResponse = new ErrorResponse("500", "Internal Server Error", err);
+         res.status(500).send(updateRoleMongodbErrorResponse.toObject());
       } else {
         console.log(user);
         //Set user fields.
@@ -153,14 +149,12 @@ router.put('/:id', async(req,res) => {
         user.save(function(err, updatedUser) {
           if (err) {
             console.log(err);
-            res.status(500).send({
-              'message': 'Internal server error!'
-            })
+            const saveRoleCatchResponse = new ErrorResponse("500", "Internal Server Error", e.message);
+            res.status(500).send(saveRoleCatchResponse.toObject());
           } else {
             console.log(updatedUser);
-            res.status(200).send({
-              'message': 'User Updated!'
-            })
+            const saveUserResponse = new BaseResponse("200", "Role Successfully Updated", updatedUser);
+             res.json(saveUserResponse.toObject());
           }
         })
       }
@@ -168,9 +162,8 @@ router.put('/:id', async(req,res) => {
   }
   catch (e){
     console.log(e);
-    res.status(500).send({
-      'message': 'Internal server error!'
-    })
+    const updateRoleCatchResponse = new ErrorResponse("500", "Internal Server Error", e.message);
+     res.status(500).send(updateRoleCatchResponse.toObject());
   }
 });
 

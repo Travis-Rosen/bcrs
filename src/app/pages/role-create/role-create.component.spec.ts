@@ -1,3 +1,12 @@
+/**
+=============================================================
+; Title:  role-create.component.spec.ts
+; Author: group 2
+; Date:   10 December 2021
+; Description: role-create component
+; =============================================================
+*/
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RoleCreateComponent } from './role-create.component';

@@ -20,6 +20,7 @@ export class UserCreateComponent implements OnInit {
   user: User;
   userId: string;
   form: FormGroup;
+  roles: any;
 
 
 

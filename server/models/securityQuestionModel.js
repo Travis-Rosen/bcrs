@@ -1,4 +1,9 @@
-
+/*
+ ; Title:  securityQuestionModel.js.js
+ ; Author: Group-2
+ ; Date:   27 November 2021
+ ; Description: Security Question Model
+*/
 
 
 

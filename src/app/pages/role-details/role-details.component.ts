@@ -1,3 +1,12 @@
+/**
+=============================================================
+; Title:  role-details.component.ts
+; Author: group 2
+; Date:   08 December 2021
+; Description: role-details component
+; =============================================================
+*/
+
 //Import required statements
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

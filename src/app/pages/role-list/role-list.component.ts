@@ -1,3 +1,11 @@
+/**
+=============================================================
+; Title:  role-list.component.ts
+; Author: group 2
+; Date:   08 December 2021
+; Description: role-list component
+; =============================================================
+*/
 
 // Import required statements 
 import { Component, OnInit } from '@angular/core';

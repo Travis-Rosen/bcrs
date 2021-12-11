@@ -19,7 +19,7 @@
   }
   
   .navbar-link {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: lighter;
   }
   
@@ -53,4 +53,9 @@
   height: 100%;
   position: absolute;
   width: 100%;  
+}
+
+/* This is a styling for sign out profile-menu icon */
+.mat-icon {
+  font-size: 35px;
 }

@@ -1,3 +1,12 @@
+/**
+=============================================================
+; Title:  role-details.component.spec.ts
+; Author: group 2
+; Date:   08 December 2021
+; Description: role-details component
+; =============================================================
+*/
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RoleDetailsComponent } from './role-details.component';

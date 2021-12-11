@@ -1,4 +1,9 @@
-
+/*
+ ; Title:  user-details.component.ts
+ ; Author: Group-2
+ ; Date:   08 December 2021
+ ; Description: user-details
+*/
 
 //import statements
 import { Role } from './../../shared/interfaces/role.interface';

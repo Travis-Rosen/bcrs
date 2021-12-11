@@ -1,3 +1,12 @@
+/**
+=============================================================
+; Title:  role-create.component.ts
+; Author: group 2
+; Date:   10 December 2021
+; Description: role-create component
+; =============================================================
+*/
+
 //Import required statements
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
