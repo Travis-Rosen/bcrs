@@ -53,6 +53,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
+//firebase
+
+
 
 
 
@@ -65,6 +68,7 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
+
 
 
 
@@ -97,7 +101,8 @@ import { ChartModule } from 'primeng/chart';
     RoleCreateComponent,
     RoleDetailsComponent,
     RoleListComponent,
- 
+
+
   ],
   imports: [
     BrowserModule,
@@ -123,7 +128,7 @@ import { ChartModule } from 'primeng/chart';
     MessageModule,
     MessagesModule,
     MatCheckboxModule,
-    TableModule,    
+    TableModule,
     ChartModule,
     MatProgressSpinnerModule
 
