@@ -53,12 +53,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
-//firebase
-
-
-
-
-
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
