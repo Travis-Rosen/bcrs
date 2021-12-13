@@ -8,7 +8,7 @@
 -->
 
 <div fxLayout="column">
-  <mat-card class="mat-elevation-z8 hp-card-sm">
+  <mat-card class="mat-elevation-z8">
       <mat-card-title>Role Details</mat-card-title>
       
       <br />
@@ -31,7 +31,7 @@
               <button mat-raised-button (click)="cancel()" color="warn">
                   Cancel
               </button>
-              <button mat-raised-button [disabled]="!form.valid" color="accent"> 
+              <button mat-raised-button [disabled]="!form.valid" color="primary"> 
                   Submit
               </button>
           </mat-card-actions>

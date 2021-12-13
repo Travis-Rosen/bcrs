@@ -1,5 +1,17 @@
-
+/**
+=============================================================
+ ; Title:  security-question-list.component.css
+ ; Author: Group-2
+ ; Date:   13 Decemeber 2021
+ ; Description:  styling for security-question-list.component.html.
+=============================================================
+*/
 
 th, td {
     width: 30%;
 }
+.mat-card {
+    width: 50%;
+    height: 30%;
+    margin: 10px auto;
+  }

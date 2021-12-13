@@ -20,6 +20,7 @@ export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
   userRole: any;
+  username: string;
 
   constructor(private cookieService: CookieService, private router: Router, private roleService: RoleService) {
     // gets user role to define access level
@@ -27,9 +28,15 @@ export class BaseLayoutComponent implements OnInit {
       this.userRole = res['data'];
     })
   }
-
+    // check if the user is an admin
+    isAdmin(): boolean {
+      return this.userRole.role === 'admin';
+    }
+  
 
   ngOnInit(): void {
+    this.username = this.cookieService.get('session_user');
+
   }
 
   signOut() {

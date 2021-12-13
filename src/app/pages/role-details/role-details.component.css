@@ -1,0 +1,14 @@
+/**
+=============================================================
+ ; Title:  role-details.component.css
+ ; Author: Group-2
+ ; Date:   13 Decemeber 2021
+ ; Description:  styling for role-details.component.html.
+=============================================================
+*/
+
+.mat-card {
+    width: 50%;
+    height: 30%;
+    margin: 10px auto;
+  }

@@ -1,0 +1,13 @@
+/**
+=============================================================
+ ; Title:  user-create.component.css
+ ; Author: Group-2
+ ; Date:   13 Decemeber 2021
+ ; Description:  styling for user-create.component.html.
+=============================================================
+*/
+
+.user-container {
+    width: 50%;
+    margin: 10px auto;
+}
