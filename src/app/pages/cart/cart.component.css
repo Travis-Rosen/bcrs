@@ -1,0 +1,12 @@
+.cart-table {
+  width: 100%;
+
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+

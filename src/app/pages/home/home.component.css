@@ -1,14 +1,26 @@
-.main-welcome {
-    margin-top: 30px;
-  }
-  
+
+
   .title {
     text-align: center;
     font-weight: lighter;
   }
-  
+
   .subtitle {
     text-align: center;
     font-size: 14px;
   }
-  
+
+
+.header {
+  padding: 10px;
+}
+
+.header-top {
+  width: 100%;
+}
+
+.hub-header {
+  margin-left: 100px;
+  margin-top: 20px;
+}
+

@@ -31,6 +31,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
+
 //Material Design / styling imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -53,6 +54,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 @NgModule({
@@ -77,6 +79,7 @@ import { ErrorInterceptor } from './shared/error.interceptor';
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
     VerifyUsernameFormComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
