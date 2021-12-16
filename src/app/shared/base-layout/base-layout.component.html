@@ -21,7 +21,6 @@
       <div *ngIf="isLoggedIn">
         <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu">
           <mat-icon class="menu">perm_identity</mat-icon>
-          <span class="badge" *ngIf="badgeCount > 0"> {{badgeCount}}</span>
         </button>
         <mat-menu #profileMenu>
           <p style="padding: 10px;" class="menu">Singed in as
@@ -38,6 +37,10 @@
           <button mat-menu-item (click)="questionConfig()" class="menu">
             <mat-icon class="menu">security</mat-icon>
             <span class="menu">Security Question Configuration</span>
+          </button>
+          <button *ngIf="userRole && userRole['role'] === 'admin" mat-menu-item (click)="adminReport()">
+            <mat-icon class="menu">poll</mat-icon>
+            <span class="menu">Service Graph</span>
           </button>
           <button mat-menu-item (click)="signOut()" class="menu">
             <mat-icon class="menu">logout</mat-icon>

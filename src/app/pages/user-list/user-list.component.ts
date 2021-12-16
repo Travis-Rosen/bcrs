@@ -12,6 +12,7 @@ import { User } from 'src/app/shared/interfaces/user.interface';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from 'src/app/shared/delete-record-dialog/delete-record-dialog.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class UserListComponent implements OnInit {
   //Set display columns
   displayedColumns= ['userName', 'firstName', "lastName", 'phoneNumber', 'address', 'email', 'functions'];
 
-  constructor(private dialog: MatDialog, private userService: UserService) {
+  constructor(private dialog: MatDialog, private userService: UserService, private http: HttpClient) {
   //Call findAllUsers()
   this.userService.findAllUsers().subscribe( res => {
     console.log(res)

@@ -6,6 +6,7 @@
 ; Description: Interface for User object
 ;===========================================
 */
+import { Role } from './../interfaces/role';
 
  //Export Interface
 export interface User {
@@ -17,4 +18,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
+    role?: Object;
 }

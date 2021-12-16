@@ -51,10 +51,18 @@ import { MatListModule} from '@angular/material/list';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule} from 'primeng/messages';
 import {MatStepperModule} from '@angular/material/stepper';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { CartComponent } from './pages/cart/cart.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+
 
 
 @NgModule({
@@ -80,6 +88,9 @@ import { CartComponent } from './pages/cart/cart.component';
     VerifySecurityQuestionsFormComponent,
     VerifyUsernameFormComponent,
     CartComponent,
+    RoleListComponent,
+    RoleDetailsComponent,
+    RoleCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +114,11 @@ import { CartComponent } from './pages/cart/cart.component';
     MatListModule,
     MatStepperModule,
     MessageModule,
-    MessagesModule
+    MessagesModule,
+    MatCheckboxModule,
+    TableModule,
+    ChartModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
