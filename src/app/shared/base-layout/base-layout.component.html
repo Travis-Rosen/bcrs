@@ -13,14 +13,20 @@
 
       </div>
       <div fxFlex></div>
+      <div class="cart-link">
+        <button mat-icon-button routerLink="/cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </div>
       <div *ngIf="isLoggedIn">
         <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu">
           <mat-icon class="menu">perm_identity</mat-icon>
+          <span class="badge" *ngIf="badgeCount > 0"> {{badgeCount}}</span>
         </button>
         <mat-menu #profileMenu>
-          <p style="padding: 10px;" class="menu">Singed in as 
+          <p style="padding: 10px;" class="menu">Singed in as
               <span
-                style="color: #0401a3; ; font-size: large"
+                style="font-weight: lighter;"
               >{{ username }}</span
           >
       </p>

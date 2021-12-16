@@ -5,6 +5,7 @@ export interface Product {
   name: string;
   price: number;
   category: string;
+  img: string;
   /* --will add images when learned
   image: string;
   */
