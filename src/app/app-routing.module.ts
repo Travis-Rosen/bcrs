@@ -48,6 +48,7 @@ const routes: Routes = [
       {
         path: 'purchases-by-service-graph',
         component: PurchasesByServiceGraphComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'about',

@@ -21,13 +21,13 @@ export class UserDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private fb:FormBuilder, private router: Router,
     private userService: UserService, private roleService: RoleService) {
 
-        this.userId = this.route.snapshot.paramMap.get('userId');
+      this.userId = this.route.snapshot.paramMap.get('userId');
 
-        this.userService.findUserById(this.userId).subscribe(res => {
-            this.user = res['data'];
-        }, err => {
-            console.log(err);
-        }, () => {
+      this.userService.findUserById(this.userId).subscribe(res => {
+          this.user = res['data'];
+      }, err => {
+          console.log(err);
+      }, () => {
           this.form.controls.firstName.setValue(this.user.firstName);
           this.form.controls.lastName.setValue(this.user.lastName);
           this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
@@ -37,15 +37,15 @@ export class UserDetailsComponent implements OnInit {
 
           console.log(this.user);
 
-          this.roleService.findAllRoles().subscribe((res) => {
-            this.roles = res.data;
+          this.roleService.findAllRoles().subscribe(res => {
+              this.roles = res.data;
           })
-        });
+      });
   }
 
-    //ensure field is filled in
-    ngOnInit(): void{
-        this.form = this.fb.group({
+  //ensure field is filled in
+  ngOnInit(): void{
+      this.form = this.fb.group({
           firstName: [null, Validators.compose([Validators.required])],
           lastName: [null, Validators.compose([Validators.required])],
           phoneNumber: [null, Validators.compose([Validators.required])],
@@ -53,11 +53,11 @@ export class UserDetailsComponent implements OnInit {
           email: [null, Validators.compose([Validators.required, Validators.email])],
           role: [null, Validators.compose([Validators.required])]
       });
-    }
+  }
 
-    //updates form values
-    saveUser(): void {
-        const updatedUser: User = {
+  //updates form values
+  saveUser(): void {
+      const updatedUser: User = {
           firstName: this.form.controls.firstName.value,
           lastName: this.form.controls.lastName.value,
           phoneNumber: this.form.controls.phoneNumber.value,
@@ -66,19 +66,15 @@ export class UserDetailsComponent implements OnInit {
           role: this.form.controls.role.value
       };
 
-      this.userService.updateUser(this.userId, updatedUser).subscribe(
-        // Success
-        (res) => {
+      this.userService.updateUser(this.userId, updatedUser).subscribe(res => {
           this.router.navigate(['/users']);
-        },
-        (err) => {
+      }, err => {
           console.log(err);
-        }
-      );
-    }
+      });
+  }
 
-    //cancel option. brings user back to user page
-    cancel(): void{
-        this.router.navigate(['/users']);
-    }
+  //cancel option. brings user back to user page
+  cancel(): void{
+      this.router.navigate(['/users']);
+  }
 }

@@ -31,10 +31,6 @@ export class BaseLayoutComponent implements OnInit {
     })
    }
 
-   incrementCount() {
-     this.badgeCount++;
-   }
-
 
 
   ngOnInit(): void {

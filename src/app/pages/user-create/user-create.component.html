@@ -65,7 +65,7 @@
 
                     <!-- address field -->
                     <mat-form-field>
-                        <input type="text" matInput [formControl]="form.controls['address']" placeholder="address">
+                        <input type="text" matInput [formControl]="form.controls['address']" placeholder="Address">
                         <mat-error class="error" *ngIf="form.controls.address.hasError('required') && form.controls.address.touched">
                             Address is a required field.
                         </mat-error>

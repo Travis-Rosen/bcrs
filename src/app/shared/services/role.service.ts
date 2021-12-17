@@ -28,30 +28,30 @@ export class RoleService {
 
   // get one role by id
   findRoleById(roleId: string): Observable<any> {
-    return this.http.get(`api/roles/${roleId}`);
+    return this.http.get(`/api/roles/${roleId}`);
   }
 
   // create a new role
   createRole(role: Role): Observable<any> {
-    return this.http.post(`api/roles`, {
+    return this.http.post(`/api/roles`, {
       text: role.text,
     });
   }
 
   // update a role
   updateRole(roleId: string, role: Role): Observable<any> {
-    return this.http.put(`api/roles/${roleId}`, {
+    return this.http.put(`/api/roles/${roleId}`, {
       text: role.text,
     });
   }
 
   // delete a role
   deleteRole(roleId: string): Observable<any> {
-    return this.http.delete(`api/roles/${roleId}`);
+    return this.http.delete(`/api/roles/${roleId}`);
   }
 
   // find user role by  userName
   findUserRole(userName: string): Observable<any> {
-    return this.http.get(`api/users/${userName}/role`);
+    return this.http.get(`/api/users/${userName}/role`);
   }
 }
