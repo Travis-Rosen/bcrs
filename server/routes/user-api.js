@@ -292,5 +292,4 @@ router.get('/:userName/role', async (req, res) => {
 //Export the router
 module.exports = router
 
-//Export the router
-module.exports = router
+

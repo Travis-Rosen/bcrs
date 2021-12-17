@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message'
+import { Messages } from 'primeng/messages';
 
 @Component({
   selector: 'app-verify-security-questions-form',

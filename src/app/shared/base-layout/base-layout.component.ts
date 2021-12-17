@@ -41,6 +41,10 @@ export class BaseLayoutComponent implements OnInit {
     this.username = this.cookieService.get('session_user');
   }
 
+  isAdmin(): boolean {
+    return this.userRole.role === 'admin';
+  }
+
   userConfig(): void {
     this.router.navigate(['/users']);
   }
@@ -52,6 +56,10 @@ export class BaseLayoutComponent implements OnInit {
   signOut() {
     this.cookieService.deleteAll();
     this.router.navigate(['/session/signin']);
+  }
+
+  roleConfig(): void{
+    this.router.navigate(['/roles']);
   }
 
 

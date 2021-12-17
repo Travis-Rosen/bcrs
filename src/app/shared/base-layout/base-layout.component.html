@@ -30,15 +30,19 @@
           >
       </p>
           <mat-divider></mat-divider>
-          <button mat-menu-item (click)="userConfig()" class="menu">
+          <button  mat-menu-item (click)="userConfig()" class="menu">
             <mat-icon class="menu">people</mat-icon>
             <span class="menu">User Configuration</span>
           </button>
-          <button mat-menu-item (click)="questionConfig()" class="menu">
+          <button  mat-menu-item (click)="questionConfig()" class="menu">
             <mat-icon class="menu">security</mat-icon>
             <span class="menu">Security Question Configuration</span>
           </button>
-          <button *ngIf="userRole && userRole['role'] === 'admin" mat-menu-item (click)="adminReport()">
+          <button  mat-menu-item (click)="roleConfig()" class="menu">
+            <mat-icon class="menu">security</mat-icon>
+            <span class="menu">Role Configuration</span>
+          </button>
+          <button  mat-menu-item (click)="adminReport()">
             <mat-icon class="menu">poll</mat-icon>
             <span class="menu">Service Graph</span>
           </button>

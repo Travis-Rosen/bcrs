@@ -1,0 +1,47 @@
+<!--/*
+ ; Title:  invoice-dialog-summary.js
+ ; Author: Group-2
+ ; Date:   13 December 2021
+ ; Description: Invoice Dialog Summary
+*/-->
+
+
+<h1 mat-dialog-title>Invoice Summary</h1>
+<h3>
+  {{ userName }} please review your order.
+</h3>
+<h4>Order date: {{ orderDate | date}}</h4>
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-title style="font-weight: lighter;">Selected Services/Items:</mat-card-title>
+    <mat-card-content>
+      <hr>
+      <div *ngFor="let lineItem of invoice.getLineItems()">
+        &nbsp; {{ lineItem.name }} ({{ lineItem.price | currency}})
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <br>
+  <mat-card>
+    <mat-card-title style="font-weight: lighter;">Additional Fees:</mat-card-title>
+    <mat-card-content>
+      <hr>
+      <div>
+        &nbsp; Parts Costs: {{ parts | currency }}
+        &nbsp; Labor Costs: {{ labor | currency }}
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+  <br>
+      <div>
+        <strong>Total Due: {{ total | currency }}</strong>
+      </div>
+
+</mat-dialog-content>
+
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button matDialogClose="cancel" color="primary">Cancel</button>
+  <button mat-raised-button matDialogClose="confirm" color="primary" cdkFocusInitial>Confirm Order</button>
+</div>

@@ -6,6 +6,7 @@ export interface Product {
   price: number;
   category: string;
   img: string;
+  selected: boolean;
   /* --will add images when learned
   image: string;
   */

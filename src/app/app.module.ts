@@ -55,6 +55,7 @@ import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
@@ -62,6 +63,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { InvoiceSummaryComponent } from './pages/invoice-summary/invoice-summary.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 
 
@@ -91,6 +94,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     RoleListComponent,
     RoleDetailsComponent,
     RoleCreateComponent,
+    InvoiceSummaryComponent,
+    PurchasesByServiceGraphComponent,
   ],
   imports: [
     BrowserModule,

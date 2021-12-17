@@ -31,7 +31,7 @@ router.post('/:userName', async(req,res) => {
       userName: req.params.userName,
       lineItems: req.body.lineItems,
       partsAmount: req.body.partsAmount,
-      laborAmount: req.body.laborAmount,
+      laborHours: req.body.laborHours,
       lineItemTotal: req.body.lineItemTotal,
       total: req.body.total
     }
@@ -80,7 +80,7 @@ router.get('/purchases-graph', async(req, res) => {
           {
             '_id':
               {
-                'title': '$lineItems.title',
+                'name': '$lineItems.name',
                 'price': '$lineItems.price'
               },
             'count':
@@ -92,7 +92,7 @@ router.get('/purchases-graph', async(req, res) => {
       {
         $sort:
         {
-          '_id.title': 1
+          '_id.name': 1
         }
       }
     ], function(err, purchaseGraph)

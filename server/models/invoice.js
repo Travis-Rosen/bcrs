@@ -12,11 +12,11 @@ const Schema = mongoose.Schema;
 const lineItemDocument = require('../schemas/line-item')
 
 const invoiceSchema = new Schema({
-  //New invoices with username, line Items Array, parts, labor, total, and date.
+  //New invoices with userName, line Items Array, parts, labor, total, and date.
   userName: {type: String},
   lineItem: [lineItemDocument],
   partsAmount: {type: Number},
-  laborAmount: {type: Number},
+  laborHours: {type: Number},
   lineItemTotal: {type: Number},
   total: {type: Number},
   oderDate: {type: Date, default: new Date()}

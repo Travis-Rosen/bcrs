@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   services: Service[];
   filteredService: Service[];
-  badgeCount: number;
+
 
   constructor(private productService: ProductsService, private cartService: CartService, private baseLayoutService: BaseLayoutComponent) {
     this.services = productService.findAllProducts();
@@ -37,19 +37,6 @@ export class HomeComponent implements OnInit {
        this.filteredService = this.services;
      }
    }
-
-   incrementCount(badgeCount: number) {
-     this.baseLayoutService.incrementCount();
-   }
-
-
-
-
-
-
-
-
-
 
 
   ngOnInit(): void {

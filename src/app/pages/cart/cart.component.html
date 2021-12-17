@@ -31,22 +31,42 @@
                 <tr>
                   <th scope="col">Item Name</th>
                   <th scope="col">Price</th>
+                  <th scop="col">Confirm</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let item of products">
+              <tbody *ngFor="let item of services">
                 <tr>
                   <td scope="row" class="tdBorder">{{ item.name }}</td>
                   <td scope="row"> {{ item.price | currency}}</td>
+                  <mat-checkbox [(ngModel)]="item.selected"></mat-checkbox>
                 </tr>
               </tbody>
             </table>
+
+
+
           </mat-card-content>
       </mat-card>
+      <br><br>
 
     </mat-card-content>
+    <form class="amounts-form">
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Parts:</mat-label>
+        <input matInput [(ngModel)]="invoice.partsAmount" type="number" name="txtParts">
+
+      </mat-form-field>
+
+      <mat-form-field class="form" appearance="fill">
+        <mat-label>Labor Hours @ $50/hr</mat-label>
+        <input matInput [(ngModel)]="invoice.laborHours" type="number" name="txtLabor">
+
+      </mat-form-field>
+    </form>
     <mat-card-actions>
+
       <div fxFlex></div>
-      <button mat-raised-button color="accent" class="submit-order">Submit Order</button>
+      <button  (click)="generateInvoice();" mat-raised-button color="accent" class="submit-order">Submit Order</button>
     </mat-card-actions>
   </mat-card>
 </div>
