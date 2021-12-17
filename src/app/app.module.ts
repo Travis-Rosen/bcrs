@@ -48,14 +48,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatListModule} from '@angular/material/list';
-import { MessageModule } from 'primeng/message';
-import { MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng-lts/message';
+import {MessagesModule} from 'primeng-lts/messages';
 import {MatStepperModule} from '@angular/material/stepper';
-import { TableModule } from 'primeng/table';
-import { ChartModule } from 'primeng/chart';
+import { TableModule } from 'primeng-lts/table';
+import { ChartModule } from 'primeng-lts/chart';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng-lts/api';
+import {AccordionModule} from 'primeng/accordion';
+import {MenuItem} from 'primeng/api';
+
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
@@ -126,6 +129,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     TableModule,
     ChartModule,
     MatProgressSpinnerModule,
+    AccordionModule,
   ],
   providers: [
     {

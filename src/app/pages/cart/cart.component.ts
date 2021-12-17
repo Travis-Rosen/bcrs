@@ -67,6 +67,7 @@ export class CartComponent implements OnInit {
            this.cartService.createInvoice(this.userName, this.invoice).subscribe(res => {
              console.log('Invoice created');
              this.reloadProducts();
+             this.cartService.clearServices();
              this.clearLineItems();
              this.invoice.clear();
              this.messageService.add({severity:'success', summary:'Success', detail:'Order Successfully Submitted!'})
@@ -80,7 +81,7 @@ export class CartComponent implements OnInit {
          }
        })
      } else {
-       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Invoice Order Error, please confirm your selected products.'})
+       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Please confirm selected services.'})
      }
    }
 
@@ -91,7 +92,7 @@ export class CartComponent implements OnInit {
    }
 
    clearLineItems() {
-     this.lineItems = [];
+     this.services = [];
    }
 
 

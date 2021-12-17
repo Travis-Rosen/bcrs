@@ -62,6 +62,10 @@ export class BaseLayoutComponent implements OnInit {
     this.router.navigate(['/roles']);
   }
 
+  adminReport(): void {
+    this.router.navigate(['/purchases-by-service-graph'])
+  }
+
 
 
 }

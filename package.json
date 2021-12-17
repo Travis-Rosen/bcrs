@@ -26,7 +26,6 @@
     "@angular/platform-browser": "~11.2.4",
     "@angular/platform-browser-dynamic": "~11.2.4",
     "@angular/router": "~11.2.4",
-    "@types/chart.js": "^2.9.34",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
@@ -38,7 +37,7 @@
     "morgan": "^1.10.0",
     "ngx-cookie-service": "^11.0.2",
     "primeicons": "^5.0.0",
-    "primeng": "^11.0.0",
+    "primeng-lts": "^11.4.9",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
