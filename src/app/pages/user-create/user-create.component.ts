@@ -20,6 +20,7 @@ export class UserCreateComponent implements OnInit {
   user: User;
   userId: string;
   form: FormGroup;
+  roles: any;
 
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
@@ -34,10 +35,11 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
     });
   }
 
-  
+
   // Create a user.
   createUser(): void {
     const newUser: User = {
@@ -48,6 +50,7 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: this.form.controls.phoneNumber.value,
       address: this.form.controls.address.value,
       email: this.form.controls.email.value,
+      role: this.form.controls.role.value
     };
        this.userService.createUser(newUser).subscribe(res =>   {
         this.router.navigate(["/users"]);

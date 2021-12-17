@@ -17,7 +17,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       this.purchases = res['data'];
 
       for (const item of this.purchases) {
-        this.labels.push(item._id.title);
+        this.labels.push(item._id.name);
         this.itemCount.push(item.count);
       }
 
@@ -33,15 +33,19 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#6B3FA0',
               '#AF593E',
               '#6CDAE7',
+              '#7FFFD4',
+              '#FF7F50',
+              '#BDB76B',
+              '#9932CC',
+              '#FF1493',
+              '#B22222',
+              '#FF69B4',
+              '#ADD8E6',
+              '#90EE90',
+              '#FF00FF',
             ],
             hoverBackgroundColor: [
-              '#ED0A3F',
-              'FF8833',
-              '5FA777',
-              '#0066CC',
-              '#6B3FA0',
-              '#AF593E',
-              '#6CDAE7',
+              '#FAF0E6',
             ],
             data: this.itemCount
           },

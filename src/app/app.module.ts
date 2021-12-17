@@ -68,6 +68,7 @@ import { RoleDetailsComponent } from './pages/role-details/role-details.componen
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { InvoiceSummaryComponent } from './pages/invoice-summary/invoice-summary.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
 
 
 
@@ -100,6 +101,7 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     RoleCreateComponent,
     InvoiceSummaryComponent,
     PurchasesByServiceGraphComponent,
+    CartDialogComponent,
 
   ],
   imports: [

@@ -50,8 +50,7 @@ Description: HTML page for user log in page
                 <a routerLink="/session/forgot" style="text-decoration: none; color:gray" class="help-link" align="end">Forgot Password?</a>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-raised button type="submit" [disabled]="!form.valid" fxFlex color="primary">Submit</button>
-
+                <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid" fxFlex>Submit</button>
               </mat-card-actions>
               <p style="text-align: center; font-weight: lighter;">Don't have an account? <a routerLink="/session/register" style="text-decoration: none;" class="help-link" color="primary">Sign-up</a></p>
             </form>

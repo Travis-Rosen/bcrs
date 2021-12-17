@@ -204,26 +204,7 @@ router.delete('/:id', async(req,res) => {
 });
 
 
-//findSelectedSecurityQuestions
-router.get('/:userName/security-questions', async (req,res) => {
-  try {
-    User.findOne({'userName': req.params.userName}, function(err, user) {
-      if (err) {
-        console.log(err);
-        const findSelectedSecurityQuestionsMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
-        res.status(500).send(findSelectedSecurityQuestionsMongoDbErrorResponse.toObject());
-      } else {
-        console.log(user);
-        const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query Successful', user);
-        res.json(findSelectedSecurityQuestionsResponse.toObject());
-      }
-    })
-  } catch (e) {
-    console.log(e);
-    const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
-    res.status(500).send(findSelectedSecurityQuestionsCatchErrorResponse.toObject());
-  }
-});
+
 
 router.get("/:userName/security-questions", async (req, res) => {
   try {

@@ -34,7 +34,6 @@ export class RoleListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // delete role
   delete(roleId, text) {
     // open dialog
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {

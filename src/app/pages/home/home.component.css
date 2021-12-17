@@ -31,20 +31,10 @@
 }
 
 .productImg {
-
   width: 250px;
   height: 250px;
-
 }
 
-.container {
-  min-height: 100%;
-  margin-bottom: -150px;
-}
 
-.container::after{
-  content: "";
-  display: block;
-}
 
 

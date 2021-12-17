@@ -14,7 +14,7 @@ const lineItemDocument = require('../schemas/line-item')
 const invoiceSchema = new Schema({
   //New invoices with userName, line Items Array, parts, labor, total, and date.
   userName: {type: String},
-  lineItem: [lineItemDocument],
+  lineItems: [lineItemDocument],
   partsAmount: {type: Number},
   laborHours: {type: Number},
   lineItemTotal: {type: Number},

@@ -4,6 +4,9 @@ import { Product } from 'src/app/shared/interfaces/products.interface';
 import { Service } from 'src/app/shared/interfaces/services';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { BaseLayoutComponent } from 'src/app/shared/base-layout/base-layout.component';
+import { MatDialog } from '@angular/material/dialog';
+import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
+
 
 
 @Component({
@@ -17,14 +20,15 @@ export class HomeComponent implements OnInit {
   filteredService: Service[];
 
 
-  constructor(private productService: ProductsService, private cartService: CartService, private baseLayoutService: BaseLayoutComponent) {
+
+  constructor(private productService: ProductsService, private cartService: CartService, private baseLayoutService: BaseLayoutComponent, private dialog: MatDialog) {
     this.services = productService.findAllProducts();
    }
 
 
    addToCart(item: Service) {
      this.cartService.addToCart(item);
-     window.alert('Your product has been added to the cart!');
+     this.dialog.open(CartDialogComponent);
    }
 
 
