@@ -4,17 +4,20 @@ import { CartService } from 'src/app/shared/services/cart.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { LineItem } from 'src/app/shared/interfaces/line-item.interface';
 import { Invoice } from 'src/app/shared/interfaces/invoice';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message, } from '@angular/compiler/src/i18n/i18n_ast';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { InvoiceSummaryComponent } from '../invoice-summary/invoice-summary.component';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  providers: [MessageService]
 })
 export class CartComponent implements OnInit {
 
@@ -27,13 +30,16 @@ export class CartComponent implements OnInit {
 
   displayedColumns = ['name', 'price', 'confirm']
 
-  constructor(private cartService: CartService, private cookieService: CookieService, private router: Router, private productService: ProductsService, private dialogRef: MatDialog) {
+  constructor(private cartService: CartService, private cookieService: CookieService, private router: Router, private productService: ProductsService, private dialogRef: MatDialog, private messageService: MessageService) {
     this.userName = this.cookieService.get('sessionuser');
     this.services = this.cartService.getServices();
     this.invoice = new Invoice(this.userName);
     this.lineItems = [];
     console.log(this.services)
    }
+
+   ngOnInit(): void {
+  }
 
    generateInvoice() {
      console.log('generateInvoice() this.invoice')
@@ -60,15 +66,33 @@ export class CartComponent implements OnInit {
          if (result === 'confirm') {
            this.cartService.createInvoice(this.userName, this.invoice).subscribe(res => {
              console.log('Invoice created');
+             this.reloadProducts();
+             this.clearLineItems();
+             this.invoice.clear();
+             this.messageService.add({severity:'success', summary:'Success', detail:'Order Successfully Submitted!'})
+
            })
          } else {
            console.log('order canceled');
+           this.reloadProducts();
+           this.clearLineItems();
+           this.invoice.clear();
          }
        })
+     } else {
+       this.messageService.add({severity: 'error', summary: 'Error', detail: 'Invoice Order Error, please confirm your selected products.'})
      }
    }
 
-  ngOnInit(): void {
-  }
+   reloadProducts() {
+     for (let service of this.services) {
+       service.selected = false;
+     }
+   }
+
+   clearLineItems() {
+     this.lineItems = [];
+   }
+
 
 }

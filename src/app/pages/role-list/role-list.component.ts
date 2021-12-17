@@ -14,60 +14,53 @@ import { Role } from '../../shared/interfaces/role';
 import { RoleService } from '../../shared/services/role.service';
 import { Message } from 'primeng/api/message';
 
+
+import {MessageService} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
+
 @Component({
   selector: 'app-role-list',
   templateUrl: './role-list.component.html',
-  styleUrls: ['./role-list.component.css']
+  styleUrls: ['./role-list.component.css'],
+  providers: [MessageService]
 })
 export class RoleListComponent implements OnInit {
+
+  msgs1: Message[];
+
+  msgs2: Message[];
 
   roles: Role[];
   errorMessages: Message[];
   displayedColumns = ['role', 'functions'];
 
-  constructor(private dialog: MatDialog, private roleService: RoleService) {
-    this.roleService.findAllRoles().subscribe(res => {
-      this.roles = res['data'];
-      console.log(this.roles);
-    })
-  }
+  constructor(private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
 
-  ngOnInit(): void {}
+ngOnInit() {
+        this.msgs1 = [
+            {severity:'success', summary:'Success', detail:'Message Content'},
+            {severity:'info', summary:'Info', detail:'Message Content'},
+            {severity:'warn', summary:'Warning', detail:'Message Content'},
+            {severity:'error', summary:'Error', detail:'Message Content'}
+        ];
 
-  // delete role
-  delete(roleId, text) {
-    // open dialog
-    const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
-      data: {
-        roleId,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: `Are you sure you want to delete role: '${text}'?`,
-      },
-      disableClose: true,
-      width: '800px',
-    });
+        this.primengConfig.ripple = true;
+    }
 
-    // on close dialog
-    dialogRef.afterClosed().subscribe((result) => {
-      // if it is true
-      if (result === 'confirm') {
-        // delete role
-        this.roleService.deleteRole(roleId).subscribe(
-          // on success
-          (res) => {
-            console.log('Role deleted'); // log to console
-            // remove role
-            this.roles = this.roles.filter((role) => role._id !== roleId);
-          },
-          // on error
-          (err) => {
-            // primeNG message
-            this.errorMessages = [
-              { severity: 'error', summary: 'Error', detail: err.message },
-            ];
-          }
-        );
-      }
-    });
-  }
+    addMessages() {
+        this.msgs2 = [
+            {severity:'success', summary:'Success', detail:'Message Content'},
+            {severity:'info', summary:'Info', detail:'Message Content'},
+            {severity:'warn', summary:'Warning', detail:'Message Content'},
+            {severity:'error', summary:'Error', detail:'Message Content'}
+        ];
+    }
+
+    clearMessages() {
+        this.msgs2 = [];
+    }
+
+    showViaService() {
+        this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+    }
 }

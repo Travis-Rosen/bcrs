@@ -64,7 +64,7 @@ mongoose.connect(conn, {
  app.use('/api/users', UserApi);
  app.use('/api/security-questions', SecurityQuestionsApi);
  app.use('/api/roles', RoleApi);
- app.use('api/invoices', InvoiceApi);
+ app.use('/api/invoices', InvoiceApi);
 
 
 /**

@@ -37,11 +37,6 @@ export class CartService {
     return this.services
   }
 
-  clearCart() {
-    this.services = [];
-    return this.services;
-  }
-
   findPurchasesByServiceGraph(): Observable<any> {
     return this.http.get(`/api/invoices/purchases-graph`);
   }
