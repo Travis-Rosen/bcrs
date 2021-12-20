@@ -62,6 +62,7 @@ import {MenuItem} from 'primeng/api';
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
+<<<<<<< HEAD
 import { CartComponent } from './pages/cart/cart.component';
 import { RoleListComponent } from './pages/role-list/role-list.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
@@ -69,6 +70,21 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { InvoiceSummaryComponent } from './pages/invoice-summary/invoice-summary.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
+=======
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';
+
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+
+
+
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 
 
@@ -95,6 +111,7 @@ import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
     VerifyUsernameFormComponent,
+<<<<<<< HEAD
     CartComponent,
     RoleListComponent,
     RoleDetailsComponent,
@@ -102,6 +119,12 @@ import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
     InvoiceSummaryComponent,
     PurchasesByServiceGraphComponent,
     CartDialogComponent,
+=======
+    RoleCreateComponent,
+    RoleDetailsComponent,
+    RoleListComponent,
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
   ],
   imports: [
@@ -130,8 +153,13 @@ import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
     MatCheckboxModule,
     TableModule,
     ChartModule,
+<<<<<<< HEAD
     MatProgressSpinnerModule,
     AccordionModule,
+=======
+    MatProgressSpinnerModule
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
   ],
   providers: [
     {

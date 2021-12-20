@@ -1,0 +1,11 @@
+/*
+ ; Title:  signin.component.css
+ ; Author: Group-2
+ ; Date:   Date: 11/29/2021
+ ; Description: Styling for signin.component.html
+*/
+
+button{
+    height: 5%;
+    font-size: 1.3em;
+}

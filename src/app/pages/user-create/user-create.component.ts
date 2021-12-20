@@ -21,6 +21,10 @@ export class UserCreateComponent implements OnInit {
   userId: string;
   form: FormGroup;
   roles: any;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }

@@ -7,6 +7,7 @@
 =============================================================
 -->
 
+<<<<<<< HEAD
 
 <div fxLayout="column">
   <mat-card class="mat-elevation-z8">
@@ -39,3 +40,36 @@
     </form>
   </mat-card>
 </div>
+=======
+<div fxLayout="column">
+    <mat-card class="mat-elevation-z8">
+      <mat-card-title>Create Role</mat-card-title>
+      <br/>
+      <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+      <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutGap="10px">
+            <mat-form-field appearance="fill">
+              <mat-label>Role</mat-label>
+
+              <input matInput [formControl]="form.controls['text']" placeholder="Role"/>
+              <mat-error *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched" class="error">
+                Role is a required field.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+  
+        <br/>
+        <mat-card-actions align="end">
+          <button mat-raised-button (click)="cancel()" color="warn">
+            Cancel
+          </button>
+          <button  [disabled]="!form.valid"  mat-raised-button color="primary" (click)="create()">
+             Submit
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+</div>
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

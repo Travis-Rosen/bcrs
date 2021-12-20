@@ -8,6 +8,8 @@
 */
 import { Role } from './../interfaces/role';
 
+import { Role } from './../interfaces/role.interface';
+
  //Export Interface
 export interface User {
     _id?: string;

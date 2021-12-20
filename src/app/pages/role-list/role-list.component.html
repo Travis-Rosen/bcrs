@@ -7,21 +7,32 @@
 =============================================================
 -->
 
+<<<<<<< HEAD
 <br>
+=======
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 <div fxLayout="column">
   <mat-card>
       <mat-card-title>Role Configuration</mat-card-title>
       <mat-card-subtitle>
         <button mat-button routerLink="/roles/create/new" color="accent">Create</button>
       </mat-card-subtitle>
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
       <br/>
       <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
       <p-table [value]="roles" styleClass="p-datatable-sm">
         <ng-template pTemplate="header">
           <tr style="font-size: 14px; font-family: 'Times New Roman', Times, serif;">
             <th style="background-color: white;">Name</th>
+<<<<<<< HEAD
             <th style="background-color: white;">Functions</th>
+=======
+            <th style="background-color: white;">Functions</th>  
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-role>
@@ -33,10 +44,19 @@
               </button>
               <button mat-icon-button (click)="delete(role._id, role.text)">
                 <mat-icon color="warn">delete</mat-icon>
+<<<<<<< HEAD
               </button>
             </td>
+=======
+              </button>                 
+            </td>  
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
           </tr>
         </ng-template>
       </p-table>
   </mat-card>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

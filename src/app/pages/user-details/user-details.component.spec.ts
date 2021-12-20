@@ -1,3 +1,9 @@
+/*
+ ; Title:  user-details.component.spec.ts
+ ; Author: Group-2
+ ; Date:   08 December 2021
+ ; Description: user component
+*/
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserDetailsComponent } from './user-details.component';

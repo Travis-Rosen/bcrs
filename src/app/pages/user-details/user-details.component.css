@@ -1,0 +1,14 @@
+/**
+=============================================================
+ ; Title:  user-details.component.css
+ ; Author: Group-2
+ ; Date:   13 Decemeber 2021
+ ; Description:  styling for user-details.component.html.
+=============================================================
+*/
+
+.user-details {
+    width: 50%;
+    margin: 10px auto;
+  
+}

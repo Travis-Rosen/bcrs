@@ -1,6 +1,18 @@
 
+<<<<<<< HEAD
 table {
   width: 100%;
 }
 
 
+=======
+ th, td {
+    width: 14%;
+}
+.mat-card {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

@@ -2,7 +2,7 @@
  ; Title:  role.js
  ; Author: Group-2
  ; Date:   30 November 2021
- ; Description: Role Model
+ ; Description: Role Model file
 */
 
 const mongoose = require('mongoose');

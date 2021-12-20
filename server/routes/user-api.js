@@ -11,9 +11,11 @@
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const User = require('../models/user');
-const RoleSchema = require('../schemas/user-role');
-const ErrorResponse = require('../services/error-response');
-const BaseResponse = require('../services/base-response');
+const RoleSchema = require('../schemas/user-role')
+const BaseResponse = require("../services/base-response");
+const ErrorResponse = require("../services/error-response");
+//saltRounds variable
+const saltRounds = 10;
 
 // Configurations
 const router = express.Router();
@@ -45,33 +47,41 @@ router.get('/', async (req,res) => {
 
 //----------------------------------------------//
 //findById
-router.get('/:id', async(req, res) => {
-  try{
-    //find user by Id
-    User.findOne({'_id': req.params.id}, function(err, user) {
+router.get("/:id", async (req, res) => {
+  try {
+    User.findOne({ _id: req.params.id }, function (err, user) {
       if (err) {
         console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error'
-        })
+        const findByIdMongodbErrorResponse = new ErrorResponse(
+          500,
+          "Internal server error",
+          err
+        );
+        res.status(500).send(findByIdMongodbErrorResponse.toObject());
       } else {
         console.log(user);
-        res.json(user);
+        const findByIdResponse = new BaseResponse(
+          200,
+          "Query successful",
+          user
+        );
+        res.json(findByIdResponse.toObject());
       }
-    })
-  } catch(e) {
+    });
+  } catch (e) {
     console.log(e);
-    res.status(500).send({
-      'message':'Internal server error'
-    })
+    const findByIdCatchErrorResponse = new ErrorResponse(
+      500,
+      "Internal server error",
+      e
+    );
+    res.status(500).send(findByIdCatchErrorResponse.toObject());
   }
 });
 
 //----------------------------------------------//
 //createUser
 
-//saltRounds variable
-const saltRounds = 10;
 
 //Post request to create new user.
 router.post('/', async(req, res) => {
@@ -114,15 +124,11 @@ router.post('/', async(req, res) => {
 //----------------------------------------------//
 //updateUser
 router.put('/:id', async(req,res) => {
-  let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds);
-
   try {
     User.findOne({'_id': req.params.id}, function(err, user) {
       if (err){
-        console.log(err);
-        res.status(500).send({
-          'message': 'Internal server error!'
-        })
+        const updateRoleMongodbErrorResponse = new ErrorResponse("500", "Internal Server Error", err);
+         res.status(500).send(updateRoleMongodbErrorResponse.toObject());
       } else {
         console.log(user);
         //Set user fields.
@@ -130,24 +136,31 @@ router.put('/:id', async(req,res) => {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
           phoneNumber: req.body.phoneNumber,
-          email: req.body.email,
           address: req.body.address,
+          email: req.body.email,
         });
+
+                //user role
         user.role.set({
           role: req.body.role
         });
+<<<<<<< HEAD
+        user.role.set({
+          role: req.body.role
+        });
+=======
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
         //Save the updated user.
         user.save(function(err, updatedUser) {
           if (err) {
             console.log(err);
-            res.status(500).send({
-              'message': 'Internal server error!'
-            })
+            const saveRoleCatchResponse = new ErrorResponse("500", "Internal Server Error", e.message);
+            res.status(500).send(saveRoleCatchResponse.toObject());
           } else {
             console.log(updatedUser);
-            res.status(200).send({
-              'message': 'User Updated!'
-            })
+            const saveUserResponse = new BaseResponse("200", "Role Successfully Updated", updatedUser);
+             res.json(saveUserResponse.toObject());
           }
         })
       }
@@ -155,9 +168,8 @@ router.put('/:id', async(req,res) => {
   }
   catch (e){
     console.log(e);
-    res.status(500).send({
-      'message': 'Internal server error!'
-    })
+    const updateRoleCatchResponse = new ErrorResponse("500", "Internal Server Error", e.message);
+     res.status(500).send(updateRoleCatchResponse.toObject());
   }
 });
 
@@ -204,9 +216,16 @@ router.delete('/:id', async(req,res) => {
 });
 
 
+<<<<<<< HEAD
 
 
 router.get("/:userName/security-questions", async (req, res) => {
+=======
+/**
+ * FindSelectedSecurityQuestions
+ */
+ router.get("/:userName/security-questions", async (req, res) => {
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
   try {
     User.findOne({ 'userName': req.params.userName}, function(err, user) {
       if (err) {
@@ -214,13 +233,21 @@ router.get("/:userName/security-questions", async (req, res) => {
         const findSelectedSelectedSecurityQuestionsMongodbErrorResponse =
           new ErrorResponse("500", "Internal server error", err);
         res.status(500).send(findSelectedSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+<<<<<<< HEAD
       } else
+=======
+      } else 
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
       {
         if (user.selectedSecurityQuestions.length > 0) {
             console.log(user);
             const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
             res.json(findSelectedSecurityQuestionsResponse.toObject());
+<<<<<<< HEAD
           }
+=======
+          } 
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
           else {
             console.log('Account created through the user configuration page and does not have assigned security questions.');
             console.log(user);
@@ -229,7 +256,11 @@ router.get("/:userName/security-questions", async (req, res) => {
           }
         }
       })
+<<<<<<< HEAD
     } catch (e)
+=======
+    } catch (e) 
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
     {
     console.log(e);
     const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse("500","Internal server error", e);

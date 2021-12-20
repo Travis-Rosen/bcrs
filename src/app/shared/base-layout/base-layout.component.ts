@@ -1,9 +1,20 @@
+/*
+ ; Title:  base-layout.component.ts
+ ; Author: Group-2
+ ; Date:   27 November 2021
+ ; Description: base-layout component
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+<<<<<<< HEAD
 import { CartService } from '../services/cart.service';
 import { HomeComponent } from 'src/app/pages/home/home.component';
 import { Role } from '../interfaces/role';
+=======
+import { Role } from '../interfaces/role.interface';
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 import { RoleService } from '../services/role.service';
 
 @Component({
@@ -14,11 +25,12 @@ import { RoleService } from '../services/role.service';
 export class BaseLayoutComponent implements OnInit {
 
   year: number = Date.now();
-  isLoggedIn: boolean;
+  userRole: any;
   username: string;
   badgeCount: number;
   userRole: any;
 
+<<<<<<< HEAD
 
 
 
@@ -44,9 +56,23 @@ export class BaseLayoutComponent implements OnInit {
   userConfig(): void {
     this.router.navigate(['/users']);
   }
+=======
+  constructor(private cookieService: CookieService, private router: Router, private roleService: RoleService) {
+    // gets user role to define access level
+    this.roleService.findUserRole(this.cookieService.get('session_user')).subscribe(res => {
+      this.userRole = res['data'];
+    })
+  }
+    // check if the user is an admin
+    isAdmin(): boolean {
+      return this.userRole.role === 'admin';
+    }
+  
 
-  questionConfig(): void {
-    this.router.navigate(['/security-questions']);
+  ngOnInit(): void {
+    this.username = this.cookieService.get('session_user');
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
+
   }
 
   signOut() {

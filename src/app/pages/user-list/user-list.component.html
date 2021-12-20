@@ -48,6 +48,7 @@
               <td mat-cell *matCellDef="let element">{{element.phoneNumber}}</td>
             </ng-container>
 
+<<<<<<< HEAD
             <!--Address-->
             <ng-container matColumnDef="address">
               <!--Table header-->
@@ -63,6 +64,24 @@
               <!--Table data-->
               <td mat-cell *matCellDef="let element">{{element.email}}</td>
             </ng-container>
+=======
+        <!--Address-->
+        <ng-container matColumnDef="address">
+          <!--Table header-->
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <!--Table data-->
+          <td mat-cell *matCellDef="let element">{{element.address}}</td>
+        </ng-container>
+
+        <!--Email-->
+        <ng-container matColumnDef="email">
+          <!--Table header-->
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <!--Table data-->
+          <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+>>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
             <!--Functions delete & edit-->
             <ng-container matColumnDef="functions">
