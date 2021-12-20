@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private fb: FormBuilder, private router: Router,
   private productService: ProductService, private invoiceService: InvoiceService, private dialogRef: MatDialog) { 
-    this.username = this.cookieService.get('sessionuser');
+    this.username = this.cookieService.get('session_user');
     this.products = this.productService.getProducts();
     this.invoice = new Invoice(this.username);
     this.lineItems = [];

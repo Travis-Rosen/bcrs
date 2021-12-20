@@ -63,7 +63,7 @@ mongoose.connect(conn, {
  app.use('/api/session', SessionApi);
  app.use('/api/security-questions', SecurityQuestionsApi);
  app.use("/api/roles", RoleApi);
- app.use("/api/invoice", InvoiceApi);
+ app.use("/api/invoices", InvoiceApi);
 
 /**
  * Create and start server
