@@ -33,6 +33,8 @@ export class BaseLayoutComponent implements OnInit {
 
 
 
+
+
   ngOnInit(): void {
     this.username = this.cookieService.get('session_user');
   }

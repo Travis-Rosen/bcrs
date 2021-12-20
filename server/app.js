@@ -35,7 +35,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-
+const port = process.env.PORT || 3000; // server port
 
 
 
@@ -70,6 +70,6 @@ mongoose.connect(conn, {
 /**
  * Create and start server
  */
-app.listen(process.env.PORT || 3000, function() {
-  console.log("application is running at localhost:" + app.get('port'))
-})
+http.createServer(app).listen(port, function() {
+  console.log(`Application started and listening on port: ${port}`)
+}); // end http create server function
