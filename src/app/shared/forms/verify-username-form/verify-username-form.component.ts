@@ -11,20 +11,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api/message';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-verify-username-form',
   templateUrl: './verify-username-form.component.html',
-  styleUrls: ['./verify-username-form.component.css'],
-  providers: [MessageService]
+  styleUrls: ['./verify-username-form.component.css']
 })
 export class VerifyUsernameFormComponent implements OnInit {
   //Defining form and error messages
   form: FormGroup;
   errorMessages: Message[];
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router, private messageService: MessageService) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
 
    }
    //Defining form group

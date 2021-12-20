@@ -15,7 +15,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 
-
 /**
  * Routes
  */
@@ -23,11 +22,7 @@ const SessionApi = require('./routes/session-api');
 const UserApi = require('./routes/user-api')
 const SecurityQuestionsApi = require('./routes/security-questions-api')
 const RoleApi = require("./routes/role-api");
-<<<<<<< HEAD
-const InvoiceApi = require("./routes/invoice-api");
-=======
 const InvoiceApi = require("./routes/invoice-api")
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 /**
  * App configurations
@@ -39,7 +34,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-
+const port = process.env.PORT || 3000; // server port
 
 
 
@@ -67,18 +62,12 @@ mongoose.connect(conn, {
  app.use('/api/users', UserApi);
  app.use('/api/session', SessionApi);
  app.use('/api/security-questions', SecurityQuestionsApi);
-<<<<<<< HEAD
- app.use('/api/roles', RoleApi);
- app.use('/api/invoices', InvoiceApi);
-
-=======
  app.use("/api/roles", RoleApi);
  app.use("/api/invoice", InvoiceApi);
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 /**
  * Create and start server
  */
-app.listen(process.env.PORT || 3000, function() {
-  console.log("application is running at localhost:" + app.get('port'))
-})
+http.createServer(app).listen(port, function() {
+  console.log(`Application started and listening on port: ${port}`)
+}); // end http create server function

@@ -1,5 +1,14 @@
+/**
+=============================================================
+; Title:  purchases-by-service-graph.component.ts
+; Author: group 2
+; Date:   08 December 2021
+; Description: purchases-by-service-graph.component.ts
+; =============================================================
+*/
+
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/shared/services/cart.service';
+import { InvoiceService } from "../../shared/services/invoice.service";
 
 @Component({
   selector: 'app-purchases-by-service-graph',
@@ -9,54 +18,56 @@ import { CartService } from 'src/app/shared/services/cart.service';
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;
-  itemCount= [];
+  itemCount = [];
   labels = [];
 
-  constructor(private cartService: CartService) {
-    this.cartService.findPurchasesByServiceGraph().subscribe(res => {
+  constructor(private invoiceService: InvoiceService) {
+    // call purchases-graph API
+    this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
+      // map the response data to the purchases variable
       this.purchases = res['data'];
 
+      // loop over the purchases to split out the services and item count
       for (const item of this.purchases) {
-        this.labels.push(item._id.name);
+        this.labels.push(item._id.title);
         this.itemCount.push(item.count);
       }
 
+      // build the object literal for the primeNG graph
       this.data = {
-        labels: this.labels,
+        labels: this.labels, // label for services
         datasets: [
+          // graph object
           {
             backgroundColor: [
-              '#ED0A3F',
-              '#FF8833',
-              '#5FA777',
-              '#0066CC',
-              '#6B3FA0',
-              '#AF593E',
-              '#6CDAE7',
-              '#7FFFD4',
-              '#FF7F50',
-              '#BDB76B',
-              '#9932CC',
-              '#FF1493',
-              '#B22222',
-              '#FF69B4',
-              '#ADD8E6',
-              '#90EE90',
-              '#FF00FF',
+              "#ED0A3F",
+              "#FF8833",
+              "#5FA777",
+              "#0066CC",
+              "#6B3FA0",
+              "#AF593E",
+              "#6CDAE7",
             ],
             hoverBackgroundColor: [
-              '#FAF0E6',
+              "#ED0A3F",
+              "#FF8833",
+              "#5FA777",
+              "#0066CC",
+              "#6B3FA0",
+              "#AF593E",
+              "#6CDAE7",
             ],
-            data: this.itemCount
+            data: this.itemCount,
           },
         ]
       };
-      console.log('Data object');
+
+      // verify the data objects structure matches prime ng's expected format
+      console.log("Data object");
       console.log(this.data);
     })
-   }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit() {
+  }
 }

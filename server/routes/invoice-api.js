@@ -31,11 +31,7 @@ router.post('/:userName', async(req,res) => {
       userName: req.params.userName,
       lineItems: req.body.lineItems,
       partsAmount: req.body.partsAmount,
-<<<<<<< HEAD
-      laborHours: req.body.laborHours,
-=======
       laborAmount: req.body.laborAmount,
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
       lineItemTotal: req.body.lineItemTotal,
       total: req.body.total
     }
@@ -84,11 +80,7 @@ router.get('/purchases-graph', async(req, res) => {
           {
             '_id':
               {
-<<<<<<< HEAD
-                'name': '$lineItems.name',
-=======
                 'title': '$lineItems.title',
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                 'price': '$lineItems.price'
               },
             'count':
@@ -100,11 +92,7 @@ router.get('/purchases-graph', async(req, res) => {
       {
         $sort:
         {
-<<<<<<< HEAD
-          '_id.name': 1
-=======
           '_id.title': 1
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
         }
       }
     ], function(err, purchaseGraph)

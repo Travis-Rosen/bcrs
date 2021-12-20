@@ -18,30 +18,31 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ResetPasswordFormComponent implements OnInit {
   isAuthenticated: string;
-  username: string;
+  userName: string;
   form: FormGroup;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cookieService: CookieService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');
-    this.username = this.route.snapshot.queryParamMap.get('username');
+    this.userName = this.route.snapshot.queryParamMap.get('username');
   }
+
 
   ngOnInit() {
+    //Build Form
     this.form = this.fb.group({
-      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])]
+      password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')])],
     });
   }
-
+  //Reset password function calling reset api
   resetPassword() {
-    this.http.post('/api/session/users/' + this.username + '/reset-password', {
+    this.http.post('/api/session/users/' + this.userName + '/reset-password', {
       password: this.form.controls['password'].value
     }).subscribe(res => {
-
-      this.cookieService.set('sessionuser', this.username, 1);
+      this.cookieService.set('session_user', this.userName, 1);
       this.router.navigate(['/']);
     }, err => {
       console.log(err);
     });
   }
-
 }
+

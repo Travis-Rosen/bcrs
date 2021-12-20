@@ -5,91 +5,89 @@
  ; Description: Invoice Dialog Summary
 */-->
 
+
 <div fxLayout="column"><!--main Div-->
 
   <mat-card><!--mat-card-->
-    <!--Card title-->
-    <mat-card-title style="text-align:center">
-      {{ username }} please confirm your order
-    </mat-card-title>
-    <!--Order date-->
-    <mat-card-subtitle style="text-align: center;">
-      Order date: {{ orderDate | date }}
-    </mat-card-subtitle>
-    <!--Card-content-->
+      <!--Card title-->
+      <mat-card-title style="text-align:center">
+        {{ username }} please confirm your order
+      </mat-card-title>
+      <!--Order date-->
+      <mat-card-subtitle style="text-align: center;">
+        Order date: {{ orderDate | date }}
+      </mat-card-subtitle>
+      <!--Card-content-->
     <mat-card-content mat-dialog-content>
-<!-----------------------------Services------------------------------------------------------->
-      <div fxLayout="column" fxLayout="10px">
-        <div fxFlex>
-          <mat-card>
-            <mat-card-title>Services</mat-card-title>
-            <mat-card-content>
-              <!--ngFor statement-->
-              <div *ngFor ="let lineItem of invoice.getLineItems()">
-                <!--mat-list-->
-                <mat-list>
-                  <!--Service title-->
-                  <mat-list-item>
-                    {{ lineItem.title }}:
-                    <!--Service price-->
-                    <div fxFlex></div>
-                    {{ lineItem.price | currency}}
-                  </mat-list-item>
-                </mat-list>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </div>
-
-<!------------------------------Fees------------------------------------------------------>
-         <div fxFlex>
-           <mat-card>
-             <!--Card-title-->
-             <mat-card-title>Standard Fees</mat-card-title>
-             <mat-card-content>
-               <mat-list>
-                 <!--Parts costs-->
-                 <mat-list-item>
-                   Parts:
-                   <div fxFlex></div>
-                   {{ parts | currency }}
-                 </mat-list-item>
-                 <!--Labor costs-->
-                 <mat-list-item>
-                   Labor @ /hrs
-                   <div fxFlex></div>
-                   {{ labor | currency }}
-                 </mat-list-item>
-               </mat-list>
-             </mat-card-content>
-           </mat-card>
-         </div>
-
-<!------------------------------Total------------------------------------------------------>
+         <!-----------------------------Services------------------------------------------------------->
+        <div fxLayout="column" fxLayout="10px">
           <div fxFlex>
-            <!--Card for total-->
             <mat-card>
+              <mat-card-title>Services</mat-card-title>
               <mat-card-content>
-                <mat-list>
-                  <mat-list-item>
-                    &nbsp;<!--Spacing-->
-                    <div fxFlex></div>
-                    Total charges: {{ total | currency }}
-                  </mat-list-item>
-                </mat-list>
+                <!--ngFor statement-->
+                <div *ngFor ="let lineItem of invoice.getLineItems()">
+                  <!--mat-list-->
+                  <mat-list>
+                    <!--Service title-->
+                    <mat-list-item>
+                      {{ lineItem.title }}:
+                      <!--Service price-->
+                      <div fxFlex></div>
+                      {{ lineItem.price | currency}}
+                    </mat-list-item>
+                  </mat-list>
+                </div>
               </mat-card-content>
             </mat-card>
           </div>
-
-          <br />
+  
+           <!------------------------------Fees------------------------------------------------------>
+            <div fxFlex>
+             <mat-card>
+               <!--Card-title-->
+               <mat-card-title>Standard Fees</mat-card-title>
+               <mat-card-content>
+                 <mat-list>
+                   <!--Parts costs-->
+                   <mat-list-item>
+                     Parts:
+                     <div fxFlex></div>
+                     {{ parts | currency }}
+                   </mat-list-item>
+                   <!--Labor costs-->
+                   <mat-list-item>
+                     Labor @ /hrs
+                     <div fxFlex></div>
+                     {{ labor | currency }}
+                   </mat-list-item>
+                 </mat-list>
+               </mat-card-content>
+             </mat-card>
+            </div>
+  
+            <!------------------------------Total------------------------------------------------------>
+            <div fxFlex>
+              <!--Card for total-->
+              <mat-card>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item>
+                      &nbsp;<!--Spacing-->
+                      <div fxFlex></div>
+                      Total charges: {{ total | currency }}
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+            </div>
+  
+            <br />
+            <div mat-dialog-actions align="end">
+              <button mat-raised-button matDialogClose="cancel">Cancel</button>
+              <button mat-raised-button matDialogClose="confirm" cdkFocusInitial>Confirm Order</button>
+            </div>
         </div>
     </mat-card-content>
   </mat-card>
-
 </div>
-
-<div mat-dialog-actions align="end">
-  <button mat-raised-button matDialogClose="cancel">Cancel</button>
-  <button mat-raised-button matDialogClose="confirm" cdkFocusInitial>Confirm Order</button>
-</div>
-

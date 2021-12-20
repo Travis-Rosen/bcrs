@@ -144,13 +144,7 @@ router.put('/:id', async(req,res) => {
         user.role.set({
           role: req.body.role
         });
-<<<<<<< HEAD
-        user.role.set({
-          role: req.body.role
-        });
-=======
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
         //Save the updated user.
         user.save(function(err, updatedUser) {
           if (err) {
@@ -216,16 +210,10 @@ router.delete('/:id', async(req,res) => {
 });
 
 
-<<<<<<< HEAD
-
-
-router.get("/:userName/security-questions", async (req, res) => {
-=======
 /**
  * FindSelectedSecurityQuestions
  */
  router.get("/:userName/security-questions", async (req, res) => {
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
   try {
     User.findOne({ 'userName': req.params.userName}, function(err, user) {
       if (err) {
@@ -233,21 +221,13 @@ router.get("/:userName/security-questions", async (req, res) => {
         const findSelectedSelectedSecurityQuestionsMongodbErrorResponse =
           new ErrorResponse("500", "Internal server error", err);
         res.status(500).send(findSelectedSelectedSecurityQuestionsMongodbErrorResponse.toObject());
-<<<<<<< HEAD
-      } else
-=======
       } else 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
       {
         if (user.selectedSecurityQuestions.length > 0) {
             console.log(user);
             const findSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
             res.json(findSelectedSecurityQuestionsResponse.toObject());
-<<<<<<< HEAD
-          }
-=======
           } 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
           else {
             console.log('Account created through the user configuration page and does not have assigned security questions.');
             console.log(user);
@@ -256,11 +236,7 @@ router.get("/:userName/security-questions", async (req, res) => {
           }
         }
       })
-<<<<<<< HEAD
-    } catch (e)
-=======
     } catch (e) 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
     {
     console.log(e);
     const findSelectedSecurityQuestionsCatchErrorResponse = new ErrorResponse("500","Internal server error", e);
@@ -303,5 +279,3 @@ router.get('/:userName/role', async (req, res) => {
 
 //Export the router
 module.exports = router
-
-

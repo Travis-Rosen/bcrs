@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { CookieService } from 'ngx-cookie-service';
-import { map } from 'rxjs/operators';
-import { RoleService } from './services/role.service';
-import { Router } from '@angular/router';
-=======
 /*
  ; Title:  role.guard.ts
  ; Author: Group-2
@@ -20,7 +11,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { map } from 'rxjs/operators';
 import { RoleService } from './services/role.service';
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +35,5 @@ export class RoleGuard implements CanActivate {
       })
     );
   }
-<<<<<<< HEAD
-
-}
-=======
   
 }
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

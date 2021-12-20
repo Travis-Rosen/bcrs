@@ -1,3 +1,12 @@
+/**
+=============================================================
+ ; Title:  delete-record-dialog.component.ts
+ ; Author: Group-2
+ ; Date:   06 Decemeber 2021
+ ; Description:  delete-record-dialog component
+=============================================================
+*/
+
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 

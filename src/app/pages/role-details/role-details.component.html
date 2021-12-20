@@ -6,18 +6,11 @@
 ; Description: role-details component
 =============================================================
 -->
-<<<<<<< HEAD
-<div fxLayout="column">
-  <mat-card class="mat-elevation-z8 hp-card-sm">
-      <mat-card-title>Role Details</mat-card-title>
-
-=======
 
 <div fxLayout="column">
   <mat-card class="mat-elevation-z8">
       <mat-card-title>Role Details</mat-card-title>
       
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
       <br />
       <form [formGroup]="form" (ngSubmit)="save()" #roleForm>
         <mat-card-content>
@@ -25,39 +18,23 @@
               <mat-form-field fxFlex appearance="fill">
                   <mat-label>Role</mat-label>
                   <input matInput [formControl]="form.controls['text']" placeholder="role" />
-<<<<<<< HEAD
-
-=======
       
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                   <mat-error class="error" *ngIf="form.controls['text'].hasError('required') && form.controls['text'].touched">
                       Role is required.
                   </mat-error>
               </mat-form-field>
           </div>
         </mat-card-content>
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
           <br />
         <mat-card-actions align="end">
               <button mat-raised-button (click)="cancel()" color="warn">
                   Cancel
               </button>
-<<<<<<< HEAD
-              <button mat-raised-button [disabled]="!form.valid" color="accent">
-=======
               <button mat-raised-button [disabled]="!form.valid" color="primary"> 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                   Submit
               </button>
           </mat-card-actions>
       </form>
   </mat-card>
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/*
-=======
 /**
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 =============================================================
 ; Title:  role-list.component.ts
 ; Author: group 2
@@ -11,19 +7,11 @@
 ; =============================================================
 */
 
-<<<<<<< HEAD
-// Import required statements
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
-import { Role } from 'src/app/shared/interfaces/role';
-=======
 // Import required statements 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
 import { Role } from '../../shared/interfaces/role.interface';
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 import { RoleService } from '../../shared/services/role.service';
 import { Message } from 'primeng/api/message';
 
@@ -46,10 +34,7 @@ export class RoleListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-<<<<<<< HEAD
-=======
   // delete role
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
   delete(roleId, text) {
     // open dialog
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
@@ -71,11 +56,7 @@ export class RoleListComponent implements OnInit {
           // on success
           (res) => {
             console.log('Role deleted'); // log to console
-<<<<<<< HEAD
-            // remove role
-=======
             // remove role 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
             this.roles = this.roles.filter((role) => role._id !== roleId);
           },
           // on error
@@ -89,8 +70,4 @@ export class RoleListComponent implements OnInit {
       }
     });
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

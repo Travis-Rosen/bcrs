@@ -1,9 +1,9 @@
 /*
 ============================================
-; Title:  user.interface.ts
+; Title:  security-question.interface.ts
 ; Author: Group-2
 ; Date:   29 November 2021
-; Description: Interface for User object
+; Description: Interface for security-question object
 ;===========================================
 */
 

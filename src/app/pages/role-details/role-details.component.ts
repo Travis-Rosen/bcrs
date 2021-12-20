@@ -6,20 +6,13 @@
 ; Description: role-details component
 ; =============================================================
 */
-<<<<<<< HEAD
-=======
 
 //Import required statements
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoleService } from '../../shared/services/role.service';
-<<<<<<< HEAD
-import { Role } from '../../shared/interfaces/role';
-=======
 import { Role } from '../../shared/interfaces/role.interface';
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 @Component({
   selector: 'app-role-details',
@@ -66,8 +59,3 @@ export class RoleDetailsComponent implements OnInit {
     this.router.navigate(['/roles']);
   }
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

@@ -3,57 +3,6 @@
   <!-- navigation -->
   <nav fxFlex>
     <mat-toolbar color="primary">
-<<<<<<< HEAD
-      <!-- navbar container -->
-      <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" routerLink="/about" mat-button>About</button>
-        <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
-
-      </div>
-      <div fxFlex></div>
-      <div class="cart-link">
-        <button mat-icon-button routerLink="/cart">
-          <mat-icon>shopping_cart</mat-icon>
-        </button>
-      </div>
-      <div *ngIf="isLoggedIn">
-        <button mat-icon-button [matMenuTriggerFor]="profileMenu" aria-label="User Profile Menu">
-          <mat-icon class="menu">perm_identity</mat-icon>
-        </button>
-        <mat-menu #profileMenu>
-          <p style="padding: 10px;" class="menu">Singed in as
-              <span
-                style="font-weight: lighter;"
-              >{{ username }}</span
-          >
-      </p>
-          <mat-divider></mat-divider>
-          <button  mat-menu-item (click)="userConfig()" class="menu">
-            <mat-icon class="menu">people</mat-icon>
-            <span class="menu">User Configuration</span>
-          </button>
-          <button  mat-menu-item (click)="questionConfig()" class="menu">
-            <mat-icon class="menu">security</mat-icon>
-            <span class="menu">Security Question Configuration</span>
-          </button>
-          <button  mat-menu-item (click)="roleConfig()" class="menu">
-            <mat-icon class="menu">security</mat-icon>
-            <span class="menu">Role Configuration</span>
-          </button>
-          <button  *ngIf="isAdmin()" mat-menu-item (click)="adminReport()">
-            <mat-icon class="menu">poll</mat-icon>
-            <span class="menu">Service Graph</span>
-          </button>
-          <button mat-menu-item (click)="signOut()" class="menu">
-            <mat-icon class="menu">logout</mat-icon>
-            <span class="menu">Sign-Out</span>
-          </button>
-        </mat-menu>
-      </div>
-=======
       <mat-toolbar-row>
           <!-- navbar container -->
         <div style="width: 80%;">
@@ -63,7 +12,7 @@
             <button class="navbar-link" routerLink="/" mat-button>Home</button>
             <button class="navbar-link" routerLink="/about" mat-button>About</button>
             <button class="navbar-link" routerLink="/contact" mat-button>Contact</button>
-            <div fxFlex></div>
+            <span fxFlex></span>
             <button mat-icon-button [matMenuTriggerFor]="session" class="ml-xs">
               <mat-icon>person</mat-icon>
             </button>
@@ -78,7 +27,6 @@
                   <mat-icon>perm_add</mat-icon
                   >Users
                 </button>
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
                 <button  *ngIf="isAdmin()" routerLink="/roles" mat-menu-item>
                   <mat-icon>security</mat-icon>
@@ -95,14 +43,14 @@
                 <mat-icon>poll</mat-icon>
                 <span>Reports</span>
               </button>
-
+              
               <mat-menu #reports="matMenu">
                 <button mat-menu-item routerLink="/purchases-by-service-graph">
                   <mat-icon>pie_chart</mat-icon>
                   <span>Purchases by Service</span>
                 </button>
               </mat-menu>
-
+              
               <button mat-menu-item  class="menu">
                 <mat-icon class="menu">login</mat-icon>
                   Signed in as:
@@ -111,7 +59,7 @@
                       >{{ username }}
                   </span>
               </button>
-
+  
 
               <button mat-menu-item (click)="signOut()" class="menu">
                 <mat-icon class="menu">logout</mat-icon>
@@ -139,7 +87,7 @@
   <!-- footer -->
   <div fxFlex>
     <footer class="footer">
-      <mat-toolbar class="footer-content" color="primary">
+      <mat-toolbar class="footer-content">
         <p>
           &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
         </p>

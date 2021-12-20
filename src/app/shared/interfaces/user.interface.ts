@@ -6,7 +6,6 @@
 ; Description: Interface for User object
 ;===========================================
 */
-import { Role } from './../interfaces/role';
 
 import { Role } from './../interfaces/role.interface';
 

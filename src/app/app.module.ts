@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //Component Imports
 import { HomeComponent } from './pages/home/home.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -24,14 +26,12 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
-import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { ResetPasswordFormComponent } from './shared/forms/reset-password-form/reset-password-form.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifySecurityQuestionsFormComponent } from './shared/forms/verify-security-questions-form/verify-security-questions-form.component';
 import { VerifyUsernameFormComponent } from './shared/forms/verify-username-form/verify-username-form.component';
-
 //Material Design / styling imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -48,29 +48,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatTableModule } from '@angular/material/table';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatListModule} from '@angular/material/list';
-import {MessageModule} from 'primeng-lts/message';
-import {MessagesModule} from 'primeng-lts/messages';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule} from 'primeng/messages';
 import {MatStepperModule} from '@angular/material/stepper';
-import { TableModule } from 'primeng-lts/table';
-import { ChartModule } from 'primeng-lts/chart';
-import {MatCheckboxModule} from '@angular/material/checkbox'
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { MessageService } from 'primeng-lts/api';
-import {AccordionModule} from 'primeng/accordion';
-import {MenuItem} from 'primeng/api';
-
 //CookieService & ErrorInterceptor
 import { CookieService } from 'ngx-cookie-service';
 import { ErrorInterceptor } from './shared/error.interceptor';
-<<<<<<< HEAD
-import { CartComponent } from './pages/cart/cart.component';
-import { RoleListComponent } from './pages/role-list/role-list.component';
-import { RoleDetailsComponent } from './pages/role-details/role-details.component';
-import { RoleCreateComponent } from './pages/role-create/role-create.component';
-import { InvoiceSummaryComponent } from './pages/invoice-summary/invoice-summary.component';
-import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
-import { CartDialogComponent } from './pages/cart-dialog/cart-dialog.component';
-=======
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';
@@ -80,11 +63,12 @@ import { RoleListComponent } from './pages/role-list/role-list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TableModule } from 'primeng/table';
 import { ChartModule } from 'primeng/chart';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 
 
+import { InvoiceDialogSummaryComponent } from './shared/invoice-dialog-summary/invoice-dialog-summary.component';
 
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 
 
@@ -93,38 +77,29 @@ import { ChartModule } from 'primeng/chart';
   declarations: [
     AppComponent,
     HomeComponent,
+    AboutUsComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
+    DeleteRecordDialogComponent,
+    SecurityQuestionDetailsComponent,
+    SecurityQuestionListComponent,
+    SecurityQuestionsCreateComponent,
+    SigninComponent,
+    UserListComponent,
     UserCreateComponent,
     UserDetailsComponent,
-    UserListComponent,
     NotFoundComponent,
-    SigninComponent,
-    DeleteRecordDialogComponent,
-    SecurityQuestionListComponent,
-    SecurityQuestionDetailsComponent,
-    SecurityQuestionsCreateComponent,
-    ServerErrorComponent,
-    ResetPasswordFormComponent,
-    AboutUsComponent,
     ContactComponent,
     RegisterComponent,
     VerifySecurityQuestionsFormComponent,
+    ResetPasswordFormComponent,
     VerifyUsernameFormComponent,
-<<<<<<< HEAD
-    CartComponent,
     RoleListComponent,
-    RoleDetailsComponent,
     RoleCreateComponent,
-    InvoiceSummaryComponent,
     PurchasesByServiceGraphComponent,
-    CartDialogComponent,
-=======
-    RoleCreateComponent,
     RoleDetailsComponent,
-    RoleListComponent,
-
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
+    InvoiceDialogSummaryComponent,
+    ServerErrorComponent,
 
   ],
   imports: [
@@ -139,27 +114,21 @@ import { ChartModule } from 'primeng/chart';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatMenuModule,
-    MatDividerModule,
+    MatInputModule,
     MatTableModule,
-    MatSelectModule,
-    MatListModule,
-    MatStepperModule,
-    MessageModule,
+    MatDividerModule,
+    MatMenuModule,
     MessagesModule,
+    MessageModule,
+    MatStepperModule,
+    MatListModule,
+    MatSelectModule,
     MatCheckboxModule,
-    TableModule,
+    TableModule,    
     ChartModule,
-<<<<<<< HEAD
-    MatProgressSpinnerModule,
-    AccordionModule,
-=======
-    MatProgressSpinnerModule
-
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
+      
   ],
   providers: [
     {

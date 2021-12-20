@@ -205,28 +205,28 @@ router.post('/verify/users/:userName/security-questions', async(req, res) => {
 });
 
 //resetPassword
-router.post('/users/:userName/reset-password', async(req, res) => {
+router.post('/users/:/userName/reset-password', async(req, res) => {
   try {
     const password = req.body.password;
-    User.findOne({'userName': req.params.userName}, function (err, user) {
+    User.findOne({'userName': req.params.userName}, function(err, user) {
       if (err) {
         console.log(err);
-        const resetPasswordMongodbErrorResponse = new ErrorResponse('500', 'Internal server error',err);
-        res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
+        const resetPasswordMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+        res.status(500).send(resetPasswordMongoDbErrorResponse.toObject());
       } else {
         console.log(user);
         let hashedPassword = bcrypt.hashSync(password, saltRounds);
         user.set({
-          password: hashedPassword,
+          password: hashedPassword
         });
-        user.save(function (err, updatedUser) {
+        user.save(function(err, updatedUser) {
           if (err) {
             console.log(err);
-            const updatedUserMongodbErrorResponse = new ErrorResponse('500',"Internal server error",err);
-            res.status(500).send(updatedUserMongodbErrorResponse.toObject());
+            const updatedUserMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error', err);
+            res.status(500).send(updatedUserMongoDbErrorResponse.toObject());
           } else {
             console.log(updatedUser);
-            const updatedPasswordResponse = new BaseResponse('200',"Query successful",updatedUser);
+            const updatedPasswordResponse = new BaseResponse('200', 'Update Successful', updatedUser);
             res.json(updatedPasswordResponse.toObject());
           }
         })
@@ -234,8 +234,9 @@ router.post('/users/:userName/reset-password', async(req, res) => {
     })
   } catch (e) {
     console.log(e);
-    const resetPasswordCatchError = new ErrorResponse('500', "Internal server error",e);
-    res.status(500).send(resetPasswordCatchError.toObject());
+    const resetPasswordCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e);
+    res.status(500).send(resetPasswordCatchErrorResponse.toObject());
   }
 });
+
 

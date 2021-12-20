@@ -1,40 +1,37 @@
+/**
+=============================================================
+ ; Title:  home.component.css
+ ; Author: Group-2
+ ; Date:   06 Decemeber 2021
+ ; Description:  home.component.css
+=============================================================
+*/
 
-
-  .title {
-    text-align: center;
-    font-weight: lighter;
-  }
-
-  .subtitle {
-    text-align: center;
-    font-size: 14px;
-  }
-
-
-.header {
-  padding: 10px;
+.title {
+  text-align: center;
+  font-weight: lighter;
 }
 
-.header-top {
-  width: 100%;
+.subtitle {
+  text-align: center;
+  font-size: 24px;
+}
+.mat-card-subtitle {
+  text-align: left;
+  font-size: 30px;
+
 }
 
-.hub-header {
-  margin-left: 100px;
-  margin-top: 20px;
+.grid-container {
+  display: grid;
+  grid-gap: 15px;
 }
 
-.product-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.productImg {
-  width: 250px;
-  height: 250px;
+mat-card-title mat-checkbox {
+  font-size: 18px !important;
 }
 
 
-
-
+.center {
+  text-align: right;
+}

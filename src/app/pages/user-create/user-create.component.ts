@@ -21,10 +21,7 @@ export class UserCreateComponent implements OnInit {
   userId: string;
   form: FormGroup;
   roles: any;
-<<<<<<< HEAD
-=======
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
@@ -39,11 +36,10 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])],
-
     });
   }
 
-
+  
   // Create a user.
   createUser(): void {
     const newUser: User = {
@@ -54,7 +50,6 @@ export class UserCreateComponent implements OnInit {
       phoneNumber: this.form.controls.phoneNumber.value,
       address: this.form.controls.address.value,
       email: this.form.controls.email.value,
-
     };
        this.userService.createUser(newUser).subscribe(res =>   {
         this.router.navigate(["/users"]);

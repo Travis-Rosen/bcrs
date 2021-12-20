@@ -6,12 +6,9 @@
  ; Description: APIs for role configuration - Sprint 3
 ============================================
 */
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 /**
  * Require statements
  */
@@ -21,15 +18,9 @@
  const User = require('../models/user');
  const ErrorResponse = require('../services/error-response');
  const BaseResponse = require('../services/base-response');
-<<<<<<< HEAD
-
- const router = express.Router();
-
-=======
  
  const router = express.Router();
  
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
  /**
   * API: FindAllRoles
  */
@@ -49,11 +40,7 @@ router.get('/', async(req, res) => {
             // if there is no error, will send back the object for base response
             else {
                 console.log(roles);
-<<<<<<< HEAD
-                const findAllRolesResponse = new BaseResponse('200', 'Query successful', roles);
-=======
                 const findAllRolesResponse = new BaseResponse('200', 'Query successful', roles); 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                 res.json(findAllRolesResponse.toObject());
             }
         })
@@ -63,19 +50,11 @@ router.get('/', async(req, res) => {
         res.status(500).send(findAllRolesCatchErrorResponse.toObject());
     }
  });
-<<<<<<< HEAD
-
- /**
-  * API: FindById
-  */
-
-=======
  
  /**
   * API: FindById
   */
  
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 router.get('/:roleId', async(req, res) => {
     try {
         Role.findOne({ '_id': req.params.roleId }, function(err, role) {
@@ -98,11 +77,7 @@ router.get('/:roleId', async(req, res) => {
         res.status(500).send(findRoleByIdCatchErrorResponse.toObject());
     }
 });
-<<<<<<< HEAD
-
-=======
  
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
  /**
   * API: CreateRole
  */
@@ -143,11 +118,7 @@ router.post('/', async(req, res) => {
        res.status(500).send(createRoleCatchErrorResponse.toObject());
     }
 });
-<<<<<<< HEAD
-
-=======
  
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
  /**
   * API: UpdateRole
   */
@@ -155,20 +126,6 @@ router.post('/', async(req, res) => {
 
 router.put('/:roleId', async(req, res) => {
     try {
-<<<<<<< HEAD
-
-       Role.findOne({'_id': req.params.roleId}, function(err, role) {
-           if (err) {
-
-               console.log(err);
-               const updateRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-               res.status(500).send(updateRoleMongodbErrorResponse.toObject());
-
-           } else {
-
-               console.log(role);
-
-=======
   
        Role.findOne({'_id': req.params.roleId}, function(err, role) {
            if (err) {
@@ -181,25 +138,10 @@ router.put('/:roleId', async(req, res) => {
   
                console.log(role);
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                // set the updated role
                role.set({
                    text: req.body.text
                });
-<<<<<<< HEAD
-
-               // save the updated role
-               role.save(function(err, updatedRole) {
-
-                   if (err) {
-
-                       console.log(err);
-                       const updatedRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-                       res.status(500).send(updatedRoleMongodbErrorResponse.toObject());
-
-                   } else {
-
-=======
   
                // save the updated role
                role.save(function(err, updatedRole) {
@@ -212,7 +154,6 @@ router.put('/:roleId', async(req, res) => {
   
                    } else {
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
                        console.log(updatedRole);
                        const updatedRoleResponse = new BaseResponse('200', 'Query successful', updatedRole);
                        res.json(updatedRoleResponse.toObject());
@@ -221,23 +162,14 @@ router.put('/:roleId', async(req, res) => {
            }
        })
     } catch (e) {
-<<<<<<< HEAD
-
-=======
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
        console.log(e);
        const updateRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
        res.status(500).send(updateRoleCatchErrorResponse.toObject());
     }
   });
-<<<<<<< HEAD
-
-
-=======
   
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
  /**
  * API: DeleteRole by id
  */
@@ -309,10 +241,5 @@ router.delete("/:roleId", async (req, res) => {
         res.status(500).send(deleteRoleCatchErrorResponse.toObject());
     }
 });
-<<<<<<< HEAD
-
- module.exports = router;
-=======
    
  module.exports = router;
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

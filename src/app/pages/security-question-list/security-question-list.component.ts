@@ -34,7 +34,7 @@ export class SecurityQuestionListComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   delete(recordId: string): void {

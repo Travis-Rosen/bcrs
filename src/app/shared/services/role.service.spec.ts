@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /*
 ============================================
 ; Title:  role.service.spec.ts
@@ -9,7 +7,6 @@
 ;===========================================
 */
 
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
 import { TestBed } from '@angular/core/testing';
 
 import { RoleService } from './role.service';

@@ -26,17 +26,11 @@ export class UserListComponent implements OnInit {
   //Set display columns
   displayedColumns= ['userName', 'firstName', "lastName", 'phoneNumber', 'address', 'email', 'functions'];
 
-<<<<<<< HEAD
-  constructor(private dialog: MatDialog, private userService: UserService, private http: HttpClient) {
-=======
   constructor(private dialog: MatDialog, private userService: UserService, private http: HttpClient,
     ) {
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
   //Call findAllUsers()
   this.userService.findAllUsers().subscribe( res => {
-    console.log(res)
-    this.users = res
-    console.log(this.users);
+    this.users = res;
   }, err => {
     console.log(err);
   });

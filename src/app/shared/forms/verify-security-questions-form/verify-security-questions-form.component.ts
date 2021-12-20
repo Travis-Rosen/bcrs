@@ -11,7 +11,6 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Message } from 'primeng/api/message'
-import { Messages } from 'primeng/messages';
 
 @Component({
   selector: 'app-verify-security-questions-form',
@@ -19,6 +18,7 @@ import { Messages } from 'primeng/messages';
   styleUrls: ['./verify-security-questions-form.component.css']
 })
 export class VerifySecurityQuestionsFormComponent implements OnInit {
+  //Defining variables
   selectedSecurityQuestions: any;
   question1: string;
   question2: string;
@@ -27,26 +27,26 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   form: FormGroup;
   errorMessages: Message[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, private fb: FormBuilder) { 
     this.username = this.route.snapshot.queryParamMap.get('username');
     console.log(this.username);
 
-
+    //Calling api to get secuirty quesions
     this.http.get('/api/users/' + this.username + '/security-questions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
       console.log(this.selectedSecurityQuestions);
       console.log(res);
     }, err => {
       console.log(err);
-
       this.errorMessages = [
         {severity: 'error', summary: 'Error', detail: err.message}
       ]
     }, () => {
+      //binding question 1-3 to selected question text
       this.question1 = this.selectedSecurityQuestions[0].questionText;
       this.question2 = this.selectedSecurityQuestions[1].questionText;
       this.question3 = this.selectedSecurityQuestions[2].questionText;
-
+       //Logging to console
       console.log(this.question1);
       console.log(this.question2);
       console.log(this.question3);
@@ -54,24 +54,23 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.fb.group({
+    this.form = this.fb.group({   
       answerToSecurityQuestion1: [null, Validators.compose([Validators.required])],
       answerToSecurityQuestion2: [null, Validators.compose([Validators.required])],
       answerToSecurityQuestion3: [null, Validators.compose([Validators.required])],
     });
   }
-
+//match up the answers to stored answers
   verifySecurityQuestions(){
     const answerToSecurityQuestion1 = this.form.controls['answerToSecurityQuestion1'].value;
     const answerToSecurityQuestion2 = this.form.controls['answerToSecurityQuestion2'].value;
     const answerToSecurityQuestion3 = this.form.controls['answerToSecurityQuestion3'].value;
 
-
     console.log(answerToSecurityQuestion1);
     console.log(answerToSecurityQuestion2);
     console.log(answerToSecurityQuestion3);
 
-
+    //api call to check answers 
     this.http.post('/api/session/verify/users/' + this.username + '/security-questions', {
       questionText1: this.question1,
       questionText2: this.question2,
@@ -81,10 +80,9 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
       answerText3: answerToSecurityQuestion3
     }).subscribe(res => {
       console.log(res);
-      if (res['message'] === 'success'){
-        this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', username: this.username}, skipLocationChange: true});
+      if (res['message'] === 'success'){      
+        this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', username: this.username}, skipLocationChange: true});  
       } else {
-        // this.errorMessage = 'Unable to verify security questions, please try again.';
         this.errorMessages = [
           {severity: 'error', summary: 'Error', detail: 'Unable to verify security question answers'}
         ]

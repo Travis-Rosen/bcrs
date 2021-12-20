@@ -1,84 +1,90 @@
-<<<<<<< HEAD
-<div class="container">
+<!--
+ ; Title:  home.component.html
+ ; Author: Group-2
+ ; Date:   06 Decemeber 2021
+ ; Description:  home.component.html page.
+-->
 
+<div fxLayout="column">
+  <div fxFlex>
+    <h1 class="title">
+      Welcome to Bob's Computer Repair Shop <br />
+      <span class="subtitle">
+        Service Repair Form
+      </span>
+    </h1>
+  </div>
 
-  <br><br>
-  <h1 style="text-align: center; font-weight: lighter;">Welcome to The Hub!</h1>
-  <h2 style="text-align: center; font-weight: lighter;">Browse by category and add to your cart below!</h2>
+  <div fxFlex>
+    <mat-card class="mat-elevated-z0 hp-card-lg">
+      <!-- products form -->
+      <form #invoiceForm="ngForm" (submit)="createInvoice();">
+        <mat-card-content>
+          <div fxLayout="column" fxLayoutGap="5px">
+            <!-- services -->
+            <div fxFlex>
+                <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+                <p-messages [(value)]="successMessages" [enableService]="false"></p-messages>
 
-  <mat-card class="mat-elevation-z8">
-    <mat-card-content>
-        <mat-toolbar color="primary" class="header-top">
-          <mat-toolbar-row></mat-toolbar-row>
+                <mat-card-subtitle>
+                  Services
+                </mat-card-subtitle>
 
-          <div class="hub-header">
-            <div fxFlex="25%">
-              <button mat-icon-button (click)="filterData('')" >
-                <mat-icon>explore</mat-icon>
-                <h6 style="font-weight: lighter;">All Products</h6>
-              </button>
+                <div class="grid-container">
+                  <ng-container *ngFor="let product of products">
+                    <mat-card>
+                      <!-- service title -->
+                      <mat-card-title>
+                        <mat-checkbox value="{{ product.price }}" [(ngModel)]="product.checked" [name]="product.title">
+                          {{ product.title }}
+                        </mat-checkbox>
+                      </mat-card-title>
+                      <br />
+              
+                      <!-- service price -->
+                      <mat-card-content>
+                        <mat-list>
+                          <mat-list-item>{{ product.price | currency }}</mat-list-item>
+                        </mat-list>
+                      </mat-card-content>
+                    </mat-card>
+                  </ng-container>
+                </div>
+                <br />
+                <mat-card class="mat-elevation-z8">
+                  <mat-card-subtitle>
+                    Standard Fees
+                  </mat-card-subtitle>
+                  <mat-card-content>
+                    <div fxLayout="column">
+                      <mat-form-field class="standard-fees" appearance="fill" fxFlex>
+                        <mat-label>Parts</mat-label>
+                        <input matInput [(ngModel)]="invoice.partsAmount" type="number" name="txtPartsAmount" />
+                      </mat-form-field>
+  
+                      <mat-form-field class="standard-fees" appearance="fill" fxFlex>
+                        <mat-label>Labor @ 50/hr</mat-label>
+                        <input matInput [(ngModel)]="invoice.laborHours" type="number" name="txtLaborHours" />
+                      </mat-form-field>
+                      <mat-card-actions class="center">
+                        <button mat-raised-button type="reset" color="warn">Cancel</button>
+                        <button mat-raised-button  class="hp-background">Place Order</button>
+                        
+                      </mat-card-actions>
+              
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+  
+
             </div>
-            <div fxFlex="25%">
-              <button  mat-icon-button (click)="filterData('repair')">
-                <mat-icon>build</mat-icon>
-                <h6 style="font-weight: lighter;">Repair Services</h6>
-              </button>
-            </div>
-            <div fxFlex="25%">
-              <button mat-icon-button (click)="filterData('preBuilt')">
-                <mat-icon>laptop</mat-icon>
-                <h6 style="font-weight: lighter;">Pre Built PCs</h6>
-              </button>
-            </div>
-            <div fxFlex="25%">
-              <button mat-icon-button (click)="filterData('monitors')">
-                <mat-icon>monitor</mat-icon>
-                <h6 style="font-weight: lighter;">Monitors</h6>
-              </button>
-            </div>
-            <div fxFlex="25%">
-              <button mat-icon-button (click)="filterData('keyboards')">
-                <mat-icon>keyboard</mat-icon>
-                <h6 style="font-weight: lighter;">Keyboards</h6>
-              </button>
-            </div>
+
           </div>
-        </mat-toolbar>
-        <br><br>
+        </mat-card-content>
 
+        <br />
 
-        <div fxLayout="row wrap" fxLayoutGap="16px grid">
-          <div fxFlex="25%" *ngFor="let item of filteredService">
-            <mat-card class="mat-elevation-z4 product-card">
-              <mat-card-title style=" align-items:center; font-weight: lighter;" >
-                {{ item.name}}
-              </mat-card-title>
-              <br>
-              <img mat-card-image src="{{ item.img }}" class="productImg">
-              <mat-card-subtitle style="font-size: 17px;"> {{ item.price | currency}}</mat-card-subtitle>
-              <mat-card-content>
-                <button (click)="addToCart(item);" mat-raised-button color="primary">Add to Cart</button>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </div>
-        <br>
-    </mat-card-content>
-
-  </mat-card>
-
-  <br><br><br><br><br><br><br><br><br>
+      </form>
+    </mat-card>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4

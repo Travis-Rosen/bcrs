@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 
 // define the user role schema
 let userRoleSchema = new Schema({
-  role: { type: String, default: 'standard' }
+  role: { type: String, default: "standard" },
 });
 
 module.exports = userRoleSchema;

@@ -1,11 +1,10 @@
+/**
+ * Date: 23 September 2021
+ * Title: BCRS - User List Styles
+ * Author: Mark Watson
+ * Description: User list CSS file.
+ */
 
-<<<<<<< HEAD
-table {
-  width: 100%;
-}
-
-
-=======
  th, td {
     width: 14%;
 }
@@ -15,4 +14,3 @@ table {
     margin-right: auto;
   }
   
->>>>>>> 908b2b6aa8f32ba8dfc99b2013f2905dec3044a4
