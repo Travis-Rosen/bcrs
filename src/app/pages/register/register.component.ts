@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   //Constructor defining params
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private CookieService: CookieService, private securityQuestionService: SecurityQuestionService) {
     this.securityQuestionService.findAllSecurityQuestions().subscribe(res => {
-      this.securityQuestions = res
+      this.securityQuestions = res['data']
     }, err => {
       console.log(err);
     })
